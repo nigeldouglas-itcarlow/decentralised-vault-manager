@@ -290,3 +290,52 @@ This can cause issues, as all future transactions with higher nonce values canno
 <br/>
 The solution is either to wait and hope that the transaction is eventually confirmed, or to create a new transaction with the same nonce value but with a higher gas price. <br/>
 This is known as a replacement transaction.
+
+## A Local Testnet Ethereum Node
+In previous practicals, we used the Sepolia blockchain rather than the Ethereum mainnet blockchain, primarily to avoid transaction fees. <br/>
+However, we still needed testnet ether (SepETH) and we had little control over the operation of the blockchain itself. <br/>
+
+We can use ```anvil```, one of the tools in the Foundry toolkit, to create a local testnet Ethereum node, that is, an Ethereum node that creates and manages its own, local blockchain. We can update the Foundry toolkit using:
+```
+foundryup
+```
+We can create a local testnet Ethereum node using:
+```
+anvil
+```
+You will need to ```keep anvil running in its own terminal```. <br/>
+The output displays a list of accounts and private-keys available for use, as well as the address and port that the node is listening on. <br/>
+<br/>
+By default, the node will automatically generate a new block as soon as a transaction is submitted. <br/>
+This is very convenient for testing purposes. <br/>
+<br/>
+In some cases a local testnet has advantages over a shared testnet like Sepolia. <br/>
+For example, we can experiment with arbitrary amounts of testnet ether, we can control the rate at which blocks are generated, and we can experiment without fear of leaking any data publicly. <br/>
+<br/>
+There are also some disadvantages: 
+- the behaviour of the blockchain is further from the behaviour of Ethereum mainnet (e.g., gas prices, block generation, etc.)
+- and we cannot use a shared block explorer such as Etherscan.
+
+As in the previous practicals, we can use cast to create transactions. <br/>
+Let’s send 5000 testnet ether from Account #1 to Account #0:
+
+```
+cast send 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 \
+--from 0x70997970c51812dc3a010c7d01b50e0d17dc79c8 \
+--unlocked \
+--value 5000ether \
+--rpc-url http://127.0.0.1:8545
+```
+
+Note the following:
+• The RPC URL is HTTP rather than HTTPS. 
+If you wish you can omit the RPC URL altogether and use the default value.
+• Your addresses for Account #0 and Account #1 are the same as mine since they are generated using the same mnemonic and BIP39 derivation path.
+• You don’t need to provide a private-key. 
+This is a convenience provided by Foundry and the ```–unlocked``` flag.
+<br/>
+Check that the transaction succeeded by using cast balance to retrieve the new balance for the address associated with Account #1:
+```
+cast balance 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 \
+--rpc-url http://127.0.0.1:8545 | cast from-wei
+```
