@@ -25,3 +25,11 @@ Run the following command in your terminal, then follow the onscreen instruction
 ```
 curl -L https://foundry.paradigm.xyz | bash
 ```
+```
+source /home/nigel/.bashrc
+```
+```
+foundryup
+```
+
+![foundryup](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/17678c50-e867-4c2f-9ea6-55da8e5e5dbf)
