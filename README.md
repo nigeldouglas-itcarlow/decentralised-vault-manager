@@ -303,9 +303,16 @@ We can create a local testnet Ethereum node using:
 ```
 anvil
 ```
+
+![anvil](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/f714c3dc-d44d-4a29-9291-eb8a7ff6ce73)
+
+
 You will need to ```keep anvil running in its own terminal```. <br/>
-The output displays a list of accounts and private-keys available for use, as well as the address and port that the node is listening on. <br/>
-<br/>
+The output displays a list of accounts and private-keys available for use, as well as the address and port that the node is listening on. 
+
+![accounts](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/cfd5aae3-387c-4add-8772-345e7028bb12)
+
+
 By default, the node will automatically generate a new block as soon as a transaction is submitted. <br/>
 This is very convenient for testing purposes. <br/>
 <br/>
