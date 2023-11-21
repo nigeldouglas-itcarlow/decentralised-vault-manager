@@ -169,7 +169,7 @@ cast rpc eth_getRawTransactionByHash TRANSACTION_HASH \
 --rpc-url https://rpc.ankr.com/eth_sepolia
 ```
 
-where TRANSACTION_HASH is the hash of the same transaction. <br/> 
+where ```TRANSACTION_HASH``` is the hash of the same transaction. <br/> 
 This uses an undocumented RPC call that is widely supported by Ethereum RPC nodes. <br/>
 <br/>
 You can hash the raw data to compute the transaction hash:
@@ -179,4 +179,47 @@ cast rpc eth_getRawTransactionByHash TRANSACTION_HASH \
 xargs cast keccak
 ```
 Verify that the transaction hash matches the one you used to lookup the transaction in the first place.
+
+
+
+### Transaction Nonces
+Verify that you have a non-zero balance of SepETH in your wallet:
+```
+cast wallet address --keystore keystore/KEYPAIR
+cast balance ADDRESS --rpc-url https://rpc.ankr.com/eth_sepolia | \
+cast from-wei
+```
+where KEYPAIR is the name of the file in your keystore directory that you created in last week’s practical, and ADDRESS is your address. <br/>
+Remember that each transaction requires a nonce: a number that is used only once with respect to each address. <br/>
+<br/>
+The first transaction sent from an address will have nonce 0, the second will have nonce 1, etc.
+Get the next available nonce for your ADDRESS:
+```
+cast nonce ADDRESS --rpc-url https://rpc.ankr.com/eth_sepolia
+```
+If the next available nonce is 0, then that indicates that you have not created any transactions from this address on the Sepolia network. <br/>
+If it has a value of, say, 42, then that indicates that you have created forty-two transactions, with nonce values 0 to 41 inclusive. <br/>
+<br/>
+Your next transaction needs to have the nonce 42. <br/> 
+If you create a transaction with a nonce less than 42 then it will be invalid. <br/>
+<br/>
+If you create a transaction with a nonce greater than 42 then it cannot confirm before a transaction with a nonce equal to 42. <br/>
+You can manually specify the nonce when sending a transaction. <br/>
+<br/>
+You can send 0.1 SepETH to yourself using:
+```
+cast send ADDRESS \
+--value 0.1ether \
+--keystore keystore/KEYPAIR \
+--from ADDRESS \
+--nonce NONCE \
+--rpc-url https://rpc.ankr.com/eth_sepolia
+```
+where ```ADDRESS``` and ```KEYPAIR``` are as before and ```NONCE``` is your next available nonce. The transaction should confirm. <br/> 
+If you inspect your address at https://sepolia.etherscan.io, we should be able to find the transaction. <br/>
+<br/>
+What happens if you try to send a transaction where the nonce value is too low or too high? <br/> 
+In either case, the transaction should not confirm. <br/> 
+<br/>
+If you inspect your address at https://sepolia.etherscan.io, you should be unable to find the transaction.
 
