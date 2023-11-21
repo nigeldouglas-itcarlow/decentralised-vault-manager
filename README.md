@@ -235,7 +235,8 @@ cast send 0x7B4531C129E1Ae801f910949eA829eE8B804eE98 \
 --rpc-url https://rpc.ankr.com/eth_sepolia
 ```
 where ```ADDRESS``` and ```KEYPAIR``` are as before and ```NONCE``` is your next available nonce. The transaction should confirm. <br/> 
-If you inspect your address at https://sepolia.etherscan.io, we should be able to find the transaction. <br/>
+If you inspect your address at ```sepolia-etherscan```, we should be able to find the transaction. <br/>
+https://sepolia.etherscan.io/address/0x7B4531C129E1Ae801f910949eA829eE8B804eE98 <br/>
 <br/>
 What happens if you try to send a transaction where the nonce value is too low or too high? <br/> 
 In either case, the transaction should not confirm. <br/> 
