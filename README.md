@@ -156,14 +156,18 @@ echo 1234567890 | cast from-wei
 
 
 ### Transaction Hashes
-You can inspect the details of a transaction:
+You can inspect the details of a transaction: <br/>
+https://sepolia.etherscan.io/tx/0x897cfa1e9cabbb19252cc5250cb039c135f9b6096908ce192b5da4e7141820c8
 ```
-cast tx TRANSACTION_HASH --rpc-url https://rpc.ankr.com/eth_sepolia
+cast tx https://sepolia.etherscan.io/tx/0x897cfa1e9cabbb19252cc5250cb039c135f9b6096908ce192b5da4e7141820c8 --rpc-url https://rpc.ankr.com/eth_sepolia
 ```
-where TRANSACTION_HASH is the hash of any transaction on the Sepolia blockchain. <br/>
+
+
+
+where ```TRANSACTION_HASH``` is the hash of any transaction on the Sepolia blockchain. <br/>
 Some of the fields are contained within the transaction itself; some are external to the transaction. <br/>
 You can inspect the values for the fields contained within the transaction: nonce, gasPrice, gasLimit, recipient, value, data, v, r, and s. <br/>
-You can inspect the “raw” data in a transaction:
+You can inspect the “```raw```” data in a transaction:
 ```
 cast rpc eth_getRawTransactionByHash TRANSACTION_HASH \
 --rpc-url https://rpc.ankr.com/eth_sepolia
