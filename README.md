@@ -92,8 +92,13 @@ cast wallet new keystore
 The keypair will be stored in a new file in the keystore directory. <br/> 
 You can inspect the address associated with the keypair using:
 ```
-cast wallet address --keystore keystore/KEYPAIR
+cast wallet address --keystore keystore/1177339e-067a-4dfb-ab5d-6669c7f6a1a1
 ```
+
+- Enter keystore password: ```helloworld```
+
+![keystore](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/69c13221-dd91-4811-b3ab-57a0d8350bde)
+
 
 where KEYPAIR is the name of the new file. <br/>
 Note that you do not need to provide an RPC URL when creating a wallet. <br/>
