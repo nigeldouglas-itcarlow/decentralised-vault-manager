@@ -241,5 +241,9 @@ https://sepolia.etherscan.io/address/0x7B4531C129E1Ae801f910949eA829eE8B804eE98 
 What happens if you try to send a transaction where the nonce value is too low or too high? <br/> 
 In either case, the transaction should not confirm. <br/> 
 <br/>
-If you inspect your address at https://sepolia.etherscan.io, you should be unable to find the transaction.
+If you inspect your address at https://sepolia.etherscan.io, you should be unable to find the transaction. <br/>
+Right now I've been running into issues with insufficient funds to perform transactions.
+
+![funds](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/33a9878f-6c8b-41f5-938a-251ddde3d308)
+
 
