@@ -126,7 +126,7 @@ It worked! I just didn't mine enough Sepolia to perform the transaction.
 
 
 ## The ETH_RPC_URL Environment Variable
-With cast, you can use an environment variable, ETH_RPC_URL, to avoid having to type the --rpc-url option for each command:
+With ```cast```, you can use an environment variable, ```ETH_RPC_URL```, to avoid having to type the ```--rpc-url``` option for each command:
 ```
 cast client --rpc-url=https://rpc.ankr.com/eth_sepolia
 ```
@@ -145,6 +145,10 @@ erigon/2.54.0/linux-amd64/go1.20.5
 
 ![client](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/ee730f9b-f003-41f2-9997-e976f234e9ab)
 
-
-
+### 
+cast has three commands for converting between Ethereum units: ```cast to-unit```, ```cast from-wei```, and ```cast to-wei```. <br/> 
+You can use these commands as part of a command pipeline, e.g.,:
+```
+echo 1234567890 | cast from-wei
+```
 
