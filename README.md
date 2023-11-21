@@ -81,11 +81,6 @@ cd
 mkdir keystore
 cast wallet new keystore
 ```
-The keypair will be stored in a new file in the keystore directory. <br/> 
-You can inspect the address associated with the keypair using:
-```
-cast wallet address --keystore keystore/KEYPAIR
-```
 
 - Secret: ```helloworld```
 - Created new encrypted keystore file: ```/home/nigel/keystore/1177339e-067a-4dfb-ab5d-6669c7f6a1a1```
@@ -93,6 +88,12 @@ cast wallet address --keystore keystore/KEYPAIR
 
 ![helloworld](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/724503a9-1146-4b54-98ae-29186a7c33d6)
 
+
+The keypair will be stored in a new file in the keystore directory. <br/> 
+You can inspect the address associated with the keypair using:
+```
+cast wallet address --keystore keystore/KEYPAIR
+```
 
 where KEYPAIR is the name of the new file. <br/>
 Note that you do not need to provide an RPC URL when creating a wallet. <br/>
