@@ -262,13 +262,13 @@ Verify that this price approximately matches the price shown on https://ethgaspr
 You can manually specify the gas price and gas limit when sending a transaction. <br/> 
 Again, you can send 0.1 SepETH to yourself using:
 ```
-cast send ADDRESS \
+cast send 0x7B4531C129E1Ae801f910949eA829eE8B804eE98 \
 --value 0.1ether \
---keystore keystore/KEYPAIR \
---from ADDRESS \
+--keystore 1177339e-067a-4dfb-ab5d-6669c7f6a1a1 \
+--from 0x97d4bCeEe5651aD0206C603f7d3F1Cd206013821 \
 --nonce NONCE \
 --gas-limit 21000 \
---gas-price CURRENT_GAS_PRICE \
+--gas-price 4.632027903 \
 --rpc-url https://rpc.ankr.com/eth_sepolia
 ```
 where ADDRESS and KEYPAIR are as above, NONCE is your next available nonce, and CURRENT_GAS_PRICE is the current gas price on the Sepolia network in wei. <br/>
