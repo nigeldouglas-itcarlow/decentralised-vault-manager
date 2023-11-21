@@ -284,3 +284,9 @@ The transaction should confirm. If you inspect your address at https://sepolia.e
 - If the gas price is higher than the current gas price, then it should confirm.
 - If the gas price is too low, then the transaction may not confirm, now or ever.
 
+#### “Stuck” Transactions
+I'm not sure if the previous transaction was stuck. Basically, When a transaction does not confirm due to a low gas price, it is said to be “stuck”. <br/>
+This can cause issues, as all future transactions with higher nonce values cannot confirm until the “stuck” transaction becomes unstuck. <br/>
+<br/>
+The solution is either to wait and hope that the transaction is eventually confirmed, or to create a new transaction with the same nonce value but with a higher gas price. <br/>
+This is known as a replacement transaction.
