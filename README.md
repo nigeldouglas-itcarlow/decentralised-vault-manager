@@ -86,6 +86,14 @@ You can inspect the address associated with the keypair using:
 ```
 cast wallet address --keystore keystore/KEYPAIR
 ```
+
+- Secret: ```helloworld```
+- Created new encrypted keystore file: ```/home/nigel/keystore/1177339e-067a-4dfb-ab5d-6669c7f6a1a1```
+- Address: ```0x97d4bCeEe5651aD0206C603f7d3F1Cd206013821```
+
+![helloworld](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/724503a9-1146-4b54-98ae-29186a7c33d6)
+
+
 where KEYPAIR is the name of the new file. <br/>
 Note that you do not need to provide an RPC URL when creating a wallet. <br/>
 Check the balance of the new address using cast balance; it should be zero. <br/>
