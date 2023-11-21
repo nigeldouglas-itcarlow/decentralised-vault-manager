@@ -107,12 +107,14 @@ Send some SepETH to your new address using your MetaMask wallet. <br/>
 Check the balance of your new address again; verify that the SepETH has arrived. <br/>
 You can send the SepETH back to your MetaMask account:
 ```
-cast send TO_ADDRESS \
+cast send 0x7B4531C129E1Ae801f910949eA829eE8B804eE98 \
 --value 0.1ether \
---keystore keystore/KEYPAIR \
---from FROM_ADDRESS \
+--keystore 1177339e-067a-4dfb-ab5d-6669c7f6a1a1 \
+--from 0x97d4bCeEe5651aD0206C603f7d3F1Cd206013821 \
 --rpc-url https://rpc.ankr.com/eth_sepolia
 ```
-where TO_ADDRESS is your address in MetaMask and FROM_ADDRESS is your address managed by cast. <br/>
+where TO_ADDRESS (0x7B4531C129E1Ae801f910949eA829eE8B804eE98) is the address in MetaMask <br/>
+and the FROM_ADDRESS (0x97d4bCeEe5651aD0206C603f7d3F1Cd206013821) is the address managed by cast. <br/>
+<br/>
 The transaction may take some time to confirm. Check the balance of the new address, one last time, using cast balance. <br/>
 Verify that the SepETH has been returned to your MetaMask account.
