@@ -21,7 +21,8 @@ wsl --install -d Ubuntu
 ## Install Foundry
 
 Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust. <br/>
-Run the following command in your terminal, then follow the onscreen instructions.
+Run the following command in your terminal, then follow the onscreen instructions. <br/>
+https://getfoundry.sh/
 ```
 curl -L https://foundry.paradigm.xyz | bash
 ```
