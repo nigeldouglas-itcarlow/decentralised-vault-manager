@@ -185,6 +185,10 @@ cast rpc eth_getRawTransactionByHash TRANSACTION_HASH \
 --rpc-url https://rpc.ankr.com/eth_sepolia | \
 xargs cast keccak
 ```
+
+![code](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/58899a63-7b41-41b0-a986-0b5f4111f0e9)
+
+
 Verify that the transaction hash matches the one you used to lookup the transaction in the first place.
 
 
