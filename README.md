@@ -40,19 +40,19 @@ foundryup
 You can use cast to perform a variety of operations. <br/>
 You can inspect the balance of your account in MetaMask:
 ```
-cast balance ADDRESS --rpc-url https://rpc.ankr.com/eth_sepolia
+cast balance 0x7B4531C129E1Ae801f910949eA829eE8B804eE98 --rpc-url https://rpc.ankr.com/eth_sepolia
 ```
 where ADDRESS is the address in the account. <br/>
 Note the use of an RPC URL to specify the Sepolia blockchain. <br/>
 The balance is reported in Wei, or more precisely SepWei. <br/>
 You can convert the balance to SepETH using:
 ```
-cast balance ADDRESS --rpc-url https://rpc.ankr.com/eth_sepolia | \
+cast balance 0x7B4531C129E1Ae801f910949eA829eE8B804eE98 --rpc-url https://rpc.ankr.com/eth_sepolia | \
 cast from-wei
 ```
 If you correctly registered an ENS in last week’s practical, then you can perform an ENS reverse lookup using:
 ```
-cast lookup-address ADDRESS --rpc-url https://rpc.ankr.com/eth_goerli
+cast lookup-address 0x7B4531C129E1Ae801f910949eA829eE8B804eE98 --rpc-url https://rpc.ankr.com/eth_goerli
 ```
 where ADDRESS is your address. <br/>
 If this returns, say, foobar123.eth, then you can inspect your balance using:
