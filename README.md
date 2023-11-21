@@ -145,10 +145,38 @@ erigon/2.54.0/linux-amd64/go1.20.5
 
 ![client](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/ee730f9b-f003-41f2-9997-e976f234e9ab)
 
-### 
+### Token Units
 cast has three commands for converting between Ethereum units: ```cast to-unit```, ```cast from-wei```, and ```cast to-wei```. <br/> 
 You can use these commands as part of a command pipeline, e.g.,:
 ```
 echo 1234567890 | cast from-wei
 ```
+
+![wei](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/22427824-b139-4d92-ba69-187d90912433)
+
+
+### Transaction Hashes
+You can inspect the details of a transaction:
+```
+cast tx TRANSACTION_HASH --rpc-url https://rpc.ankr.com/eth_sepolia
+```
+where TRANSACTION_HASH is the hash of any transaction on the Sepolia blockchain. <br/>
+Some of the fields are contained within the transaction itself; some are external to the transaction. <br/>
+You can inspect the values for the fields contained within the transaction: nonce, gasPrice, gasLimit, recipient, value, data, v, r, and s. <br/>
+You can inspect the “raw” data in a transaction:
+```
+cast rpc eth_getRawTransactionByHash TRANSACTION_HASH \
+--rpc-url https://rpc.ankr.com/eth_sepolia
+```
+
+where TRANSACTION_HASH is the hash of the same transaction. <br/> 
+This uses an undocumented RPC call that is widely supported by Ethereum RPC nodes. <br/>
+<br/>
+You can hash the raw data to compute the transaction hash:
+```
+cast rpc eth_getRawTransactionByHash TRANSACTION_HASH \
+--rpc-url https://rpc.ankr.com/eth_sepolia | \
+xargs cast keccak
+```
+Verify that the transaction hash matches the one you used to lookup the transaction in the first place.
 
