@@ -211,11 +211,14 @@ Remember that each transaction requires a nonce: a number that is used only once
 The first transaction sent from an address will have nonce 0, the second will have nonce 1, etc.
 Get the next available nonce for your ADDRESS:
 ```
-cast nonce ADDRESS --rpc-url https://rpc.ankr.com/eth_sepolia
+cast nonce 0x7B4531C129E1Ae801f910949eA829eE8B804eE98 --rpc-url https://rpc.ankr.com/eth_sepolia
 ```
 If the next available nonce is 0, then that indicates that you have not created any transactions from this address on the Sepolia network. <br/>
 If it has a value of, say, 42, then that indicates that you have created forty-two transactions, with nonce values 0 to 41 inclusive. <br/>
-<br/>
+
+![cast](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/f9525d89-42c6-4531-b281-34e22adc89f6)
+
+
 Your next transaction needs to have the nonce 42. <br/> 
 If you create a transaction with a nonce less than 42 then it will be invalid. <br/>
 <br/>
@@ -224,10 +227,10 @@ You can manually specify the nonce when sending a transaction. <br/>
 <br/>
 You can send 0.1 SepETH to yourself using:
 ```
-cast send ADDRESS \
+cast send 0x7B4531C129E1Ae801f910949eA829eE8B804eE98 \
 --value 0.1ether \
---keystore keystore/KEYPAIR \
---from ADDRESS \
+--keystore 1177339e-067a-4dfb-ab5d-6669c7f6a1a1 \
+--from 0x97d4bCeEe5651aD0206C603f7d3F1Cd206013821 \
 --nonce NONCE \
 --rpc-url https://rpc.ankr.com/eth_sepolia
 ```
