@@ -123,3 +123,28 @@ Verify that the SepETH has been returned to your MetaMask account.
 ![funds](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/a269a11e-4681-490f-9f20-1c1d22c2500b)
 
 It worked! I just didn't mine enough Sepolia to perform the transaction.
+
+
+## The ETH_RPC_URL Environment Variable
+With cast, you can use an environment variable, ETH_RPC_URL, to avoid having to type the --rpc-url option for each command:
+```
+cast client --rpc-url=https://rpc.ankr.com/eth_sepolia
+```
+erigon/2.54.0/linux-amd64/go1.20.5
+```
+export ETH_RPC_URL=https://rpc.ankr.com/eth_sepolia
+```
+```
+echo $ETH_RPC_URL
+```
+https://rpc.ankr.com/eth_sepolia
+```
+cast client
+```
+erigon/2.54.0/linux-amd64/go1.20.5
+
+![client](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/ee730f9b-f003-41f2-9997-e976f234e9ab)
+
+
+
+
