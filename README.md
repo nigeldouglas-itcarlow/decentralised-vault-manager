@@ -50,10 +50,25 @@ You can convert the balance to SepETH using:
 cast balance 0x7B4531C129E1Ae801f910949eA829eE8B804eE98 --rpc-url https://rpc.ankr.com/eth_sepolia | \
 cast from-wei
 ```
-If you correctly registered an ENS in last week’s practical, then you can perform an ENS reverse lookup using:
+If you correctly registered a decentralized domain (ENS), then you can perform an ENS reverse lookup using:
 ```
 cast lookup-address 0x7B4531C129E1Ae801f910949eA829eE8B804eE98 --rpc-url https://rpc.ankr.com/eth_goerli
 ```
+
+ENS does not yet support the Sepolia network. Visit ENS at ```https://ens.domains```. <br/>
+ENS is a decentralised DNS. It enables us to buy secure, private, censorship-resistant domains (.eth) domain names. <br/>
+<br/>
+Launch the application. Connect your wallet. Make sure you are connected to the Gorli network. <br/>
+This is an older testnet network. Search for a name; try to pick one that no one else has taken. <br/>
+<br/>
+Please note that this name will be published to the Gorli blockchain and linked with your EVM-compatible address. <br/>
+Register the name and set it as your primary ENS name. Since my EVM address does not have an ENS, I get this error.
+
+![ens](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/51f18a27-3008-4ae9-b7bb-2e0cf12069e0)
+
+
+
+
 where ADDRESS is your address. <br/>
 If this returns, say, foobar123.eth, then you can inspect your balance using:
 ```
