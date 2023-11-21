@@ -15,6 +15,9 @@ wsl --install -d Ubuntu
 
 ![ubuntu](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/a71880bc-e590-4f44-a2f9-e50c9398f2c3)
 
+- Username: nigel
+- Password: helloworld
+
 ## Install Foundry
 
 Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust. <br/>
