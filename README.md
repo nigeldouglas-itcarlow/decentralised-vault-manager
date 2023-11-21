@@ -196,10 +196,15 @@ Verify that the transaction hash matches the one you used to lookup the transact
 ### Transaction Nonces
 Verify that you have a non-zero balance of SepETH in your wallet:
 ```
-cast wallet address --keystore keystore/KEYPAIR
-cast balance ADDRESS --rpc-url https://rpc.ankr.com/eth_sepolia | \
+cast wallet address --keystore 1177339e-067a-4dfb-ab5d-6669c7f6a1a1
+cast balance 0x7B4531C129E1Ae801f910949eA829eE8B804eE98 --rpc-url https://rpc.ankr.com/eth_sepolia | \
 cast from-wei
 ```
+
+![key](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/a6213179-6def-4c89-981a-6773e142ced2)
+
+
+
 where KEYPAIR is the name of the file in your keystore directory that you created in last week’s practical, and ADDRESS is your address. <br/>
 Remember that each transaction requires a nonce: a number that is used only once with respect to each address. <br/>
 <br/>
