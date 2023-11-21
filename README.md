@@ -247,3 +247,36 @@ Right now I've been running into issues with insufficient funds to perform trans
 ![funds](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/33a9878f-6c8b-41f5-938a-251ddde3d308)
 
 
+#### Transaction Fees
+Check the current gas price on the Sepolia network:
+```
+cast gas-price --rpc-url https://rpc.ankr.com/eth_sepolia | \
+xargs -I {} cast --to-unit {} gwei
+```
+To check the current gas price on Ethereum mainnet, change the RPC URL:
+```
+cast gas-price --rpc-url https://rpc.ankr.com/eth | \
+xargs -I {} cast --to-unit {} gwei
+```
+Verify that this price approximately matches the price shown on https://ethgasprice.org. <br/>
+You can manually specify the gas price and gas limit when sending a transaction. <br/> 
+Again, you can send 0.1 SepETH to yourself using:
+```
+cast send ADDRESS \
+--value 0.1ether \
+--keystore keystore/KEYPAIR \
+--from ADDRESS \
+--nonce NONCE \
+--gas-limit 21000 \
+--gas-price CURRENT_GAS_PRICE \
+--rpc-url https://rpc.ankr.com/eth_sepolia
+```
+where ADDRESS and KEYPAIR are as above, NONCE is your next available nonce, and CURRENT_GAS_PRICE is the current gas price on the Sepolia network in wei. <br/>
+Also note that this transaction sets the gas limit to 21 000; this is the minimum required for a standard Ethereum transfer. <br/>
+The transaction should confirm. If you inspect your address at https://sepolia.etherscan.io, you should be able to find the transaction.
+
+- What happens if you try to send a transaction where the gas limit is higher or lower than 21 000?
+- What happens if you try to send a transaction where the gas price is higher or lower than the current gas price?
+- If the gas price is higher than the current gas price, then it should confirm.
+- If the gas price is too low, then the transaction may not confirm, now or ever.
+
