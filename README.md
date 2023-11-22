@@ -634,10 +634,10 @@ wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/decentralised-vault
 ```
 
 Here we simply create an instance of the Counter contract; this is broadcast to our local testnet Ethereum node as a contract deployment. <br/>
-Now we can run the deployment script:
+Now we can run the deployment script from the default directory. Please do not run from ```src```, ```script```, or ```test``` folders.
 
 ```
-forge script script/Counter.s.sol:CounterScript --rpc-url local --broadcast
+forge script script/Counter.s.sol --rpc-url local --broadcast
 ```
 
 #### Figuring out the logic of contract code
@@ -659,6 +659,12 @@ contract TaskManagerTest is Test {
         taskManager = new TaskManager();
         alice = makeAddr("Alice");
         bob = makeAddr("Bob");
+    }
+
+    function run() public { // Implement the run function
+        testInitial();
+        testSingleTask();
+        testMultipleTasks();
     }
 
     function testInitial() public {
