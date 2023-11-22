@@ -428,7 +428,6 @@ PRIVATE_KEY=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
 Then open ```foundry.toml``` and add the following lines:
 
 ```
-...
 [rpc_endpoints]
 local = "${RPC_URL}"
 ```
@@ -439,26 +438,38 @@ Replace the contents of ```script/Counter.s.sol``` with the following:
 ```
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
-import {Script, console2} from "forge-std/Script.sol";
+
+import { Script, console2 } from "forge-std/Script.sol";
 import "../src/Counter.sol";
+
 contract CounterScript is Script {
-function setUp() public {}
-function run() public {
-uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
-vm.startBroadcast(deployerPrivateKey);
-Counter ctr = new Counter();
-vm.stopBroadcast();
-}
+    function setUp() public {}
+
+    function run() public {
+        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+        vm.startBroadcast(deployerPrivateKey);
+        
+        Counter ctr = new Counter();
+        
+        vm.stopBroadcast();
+    }
 }
 ```
 This deploys our Counter contract. The entry point is the run() function. <br/> 
 It loads in the private-key from .env. vm.startBroadcast() and vm.stopBroadcast() are ‘cheatcodes’ that record contract calls and contract deployments. <br/> 
-<br/>
+
+![scripts](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/89c853be-e05b-4ce9-9158-3acb160408df)
+
+
 Here we simply create an instance of the Counter contract; this is broadcast to our local testnet Ethereum node as a contract deployment.
 Now we can run the deployment script:
 ```
 forge script script/Counter.s.sol:CounterScript --rpc-url local --broadcast
 ```
+
+![evm](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/4ac8c565-dab1-4c6a-ac04-20b9607bd212)
+
+
 Congratulations! We have now deployed a smart contract to our local testnet Ethereum node. <br/> 
 Check the output for the address of the Contract Account.
 
