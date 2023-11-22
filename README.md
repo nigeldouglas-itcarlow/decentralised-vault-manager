@@ -477,19 +477,23 @@ Check the output for the address of the Contract Account.
 Once we have deployed our smart contract we can interact with it directly using cast. <br/>
 For example, to retrieve the current value stored by the counter, we can use:
 ```
-cast call CONTRACT_ADDRESS "number()(uint256)" \
+cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "number()(uint256)" \
 --rpc-url local
 ```
-where CONTRACT_ADDRESS is the address of the Contract Account. <br/>
+where 0x5FbDB2315678afecb367f032d93F642f64180aa3 address of the Contract Account. <br/>
 The call should return 0, as the counter is implicitly initialised to that value. <br/>
 <br/>
 Next, we can try to increment the counter:
 ```
-cast send CONTRACT_ADDRESS "increment()()" \
+cast send 0x5FbDB2315678afecb367f032d93F642f64180aa3 "increment()()" \
 --from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 \
 --unlocked \
 --rpc-url local
 ```
+
+![contract](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/5b886806-43f1-47c8-8d5e-cbae34f45542)
+
+
 Note we need to use cast send instead of cast call since we are writing data to the blockchain rather than just reading data. <br/>
 We need to create a transaction to do this. <br/>
 <br/>
