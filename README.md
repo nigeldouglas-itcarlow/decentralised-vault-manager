@@ -703,4 +703,8 @@ I added a ```run()``` function and now apparently it runs, even though its not c
 
 ![running](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/f7795895-1cae-430b-a2a6-327b13c8fcdf)
 
+I'm still unsure how to interact with ```cast```
+
+![error](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/20d0c830-22e2-4045-b3d4-70a1a19cbb68)
+
 
