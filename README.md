@@ -10,7 +10,7 @@ Create a project for the smart contract using forge - [LINK](https://github.com/
 Write the code and tests for the smart contract in Solidity - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#write-and-test-code-in-solidity) <br/>
 Compile the code to create the EVM bytecode and run the tests using forge - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#compile-the-code-and-run-the-tests) <br/> <br/>
 Deploy the smart contract to the local testnet Ethereum node using forge - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#deploy-the-smart-contract) <br/>
-Interact with the newly deployed smart contract using cast.
+Interact with the newly deployed smart contract using cast - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#interact-with-the-deployed-smart-contract)
 
 
 ### Install WSL (Windows Only)
