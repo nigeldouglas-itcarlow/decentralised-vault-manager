@@ -327,8 +327,8 @@ As in the previous practicals, we can use cast to create transactions. <br/>
 Let’s send 5000 testnet ether from Account #1 to Account #0:
 
 ```
-cast send 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 \
---from 0x70997970c51812dc3a010c7d01b50e0d17dc79c8 \
+cast send 0x7B4531C129E1Ae801f910949eA829eE8B804eE98 \
+--from 0x97d4bCeEe5651aD0206C603f7d3F1Cd206013821 \
 --unlocked \
 --value 5000ether \
 --rpc-url http://127.0.0.1:8545
@@ -343,6 +343,6 @@ This is a convenience provided by Foundry and the ```–unlocked``` flag.
 <br/>
 Check that the transaction succeeded by using cast balance to retrieve the new balance for the address associated with Account #1:
 ```
-cast balance 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 \
+cast balance 0x7B4531C129E1Ae801f910949eA829eE8B804eE98 \
 --rpc-url http://127.0.0.1:8545 | cast from-wei
 ```
