@@ -533,3 +533,19 @@ error Unauthorised();
 contract TaskManager {
 enum Status {Todo, Doing, Done, Canceled}
 ```
+
+Move to the ```src``` directory
+```
+cd src
+```
+
+Remove the ```Counter.sol``` smart contract. <br/>
+```sol``` is a file format for representing solutions of mathematical programming problems.
+```
+rm Counter.sol
+```
+
+Download the ```TaskManager.sol```smart solution from Github:
+```
+wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/decentralised-vault-manager/main/task-manager/TaskManager.sol
+```
