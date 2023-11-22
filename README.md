@@ -461,7 +461,7 @@ It loads in the private-key from .env. vm.startBroadcast() and vm.stopBroadcast(
 ![scripts](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/89c853be-e05b-4ce9-9158-3acb160408df)
 
 
-Here we simply create an instance of the Counter contract; this is broadcast to our local testnet Ethereum node as a contract deployment.
+Here we simply create an instance of the Counter contract; this is broadcast to our local testnet Ethereum node as a contract deployment. <br/>
 Now we can run the deployment script:
 ```
 forge script script/Counter.s.sol:CounterScript --rpc-url local --broadcast
@@ -631,6 +631,13 @@ rm Counter.t.sol
 Download the new TaskManager solution file:
 ```
 wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/decentralised-vault-manager/main/task-manager/TaskManager.t.sol
+```
+
+Here we simply create an instance of the Counter contract; this is broadcast to our local testnet Ethereum node as a contract deployment. <br/>
+Now we can run the deployment script:
+
+```
+forge script script/Counter.s.sol:CounterScript --rpc-url local --broadcast
 ```
 
 #### Figuring out the logic of contract code
