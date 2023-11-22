@@ -9,7 +9,7 @@ Create a local testnet Ethereum node using anvil - [LINK](https://github.com/nig
 Create a project for the smart contract using forge - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#create-a-forge-project) <br/> <br/>
 Write the code and tests for the smart contract in Solidity - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#write-and-test-code-in-solidity) <br/>
 Compile the code to create the EVM bytecode and run the tests using forge - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#compile-the-code-and-run-the-tests) <br/> <br/>
-Deploy the smart contract to the local testnet Ethereum node using forge - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#compile-the-code-and-run-the-tests) <br/>
+Deploy the smart contract to the local testnet Ethereum node using forge - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#deploy-the-smart-contract) <br/>
 Interact with the newly deployed smart contract using cast.
 
 
