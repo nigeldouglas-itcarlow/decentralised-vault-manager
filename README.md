@@ -698,3 +698,7 @@ Currently, it's throwing some errors:
 ![relative](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/5eddaeed-18cd-4d77-b91a-ed9735689f3e)
 
 I added a ```run()``` function and now apparently it runs, even though its not clear right now if it does anything. lol
+
+![running](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/f7795895-1cae-430b-a2a6-327b13c8fcdf)
+
+
