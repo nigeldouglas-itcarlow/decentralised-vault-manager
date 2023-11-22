@@ -549,3 +549,66 @@ Download the ```TaskManager.sol```smart solution from Github:
 ```
 wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/decentralised-vault-manager/main/task-manager/TaskManager.sol
 ```
+
+![taskmanager](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/ba8e0431-21c5-4aa7-9d18-778a23f91ce6)
+
+Provide implementations for the contract functions and the onlyOwner modifier. <br/>
+The modifier should restrict who can call a function:
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract YourContractName {
+
+    enum Status { Pending, InProgress, Completed }
+
+    struct Task {
+        string name;
+        Status status;
+        address owner;
+    }
+
+    Task[] public tasks;
+    mapping(address => uint256[]) public tasksByOwner;
+
+    event TaskAdded(uint256 id, string name, Status status, address owner);
+
+    modifier onlyOwner(uint256 _taskId) {
+        require(tasks[_taskId].owner == msg.sender, "Not the task owner");
+        _;
+    }
+
+    function addTask(string memory _name, Status _status) public returns (uint256 index) {
+        Task memory newTask = Task(_name, _status, msg.sender);
+        index = tasks.length;
+        tasks.push(newTask);
+        tasksByOwner[msg.sender].push(index);
+        emit TaskAdded(index, _name, _status, msg.sender);
+    }
+
+    function updateStatus(uint256 _taskId, Status _status) public onlyOwner(_taskId) {
+        tasks[_taskId].status = _status;
+    }
+
+    function getTask(uint256 _taskId) public view returns (string memory name, Status status, address owner) {
+        require(_taskId < tasks.length, "Task does not exist");
+        Task memory task = tasks[_taskId];
+        return (task.name, task.status, task.owner);
+    }
+
+    function getTasksLength() public view returns (uint256) {
+        return tasks.length;
+    }
+
+    function getMyTasks() public view returns (uint256[] memory) {
+        return tasksByOwner[msg.sender];
+    }
+}
+```
+
+Please note that I made some assumptions about the missing parts of your code. <br/>
+Make sure to replace "YourContractName" with the actual name of your contract, and customize the code according to your specific requirements.
+
+## Tests for a Task Manager
+
