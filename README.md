@@ -374,3 +374,15 @@ The project will be placed in a directory named counter-contract. <br/>
 By default forge also initialises a ```git``` repository and uses git submodules to manage dependencies. <br/>
 If you are unfamiliar with git, and git submodules in particular, I suggest supplying the ```--no-git``` option to skip this step. <br/>
 Inspect the folder structure in ```counter-contract```. The source code is in src, third-party libraries are in ```lib```, tests are in ```test```, and scripts, including deployment scripts, are in ```script```.
+
+![forge](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/4764f1a9-8525-4b6a-8dc4-f477e73afd34)
+
+## Write and Test Code in Solidity
+Inspect the smart contract in counter-contract/src/Counter.sol. <br/>
+The contract is very simple: it stores a single number and provides 2 functions that can be called by anyone: <br/>
+- the first, setNumber() replaces the old number with a new number;
+- the second, increment() increases the value of the number by one.
+
+Inspect the corresponding tests in counter-contract/test/Counter.t.sol. <br/>
+It constructs an instance of the Counter contract, sets its value to 0, increments the value, checks that the value is now 1, sets the value to some arbitrary number, and checks that the value now matches the new number.
+
