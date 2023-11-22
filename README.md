@@ -714,3 +714,8 @@ wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/decentralised-vault
 
 ![testing](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/b7471f98-9266-4855-b093-ddbfea77d9e0)
 
+Need to make copies of the folder for specific test scenarios:
+```
+cp -r counter-contract counter-contract2
+```
+
