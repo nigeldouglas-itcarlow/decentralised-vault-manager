@@ -2,7 +2,7 @@
 Smart contracts can accept, store, and distribute native tokens. <br/>
 Solidity, the most popular programming language for writing smart contracts for the EVM, has built-in functionality to support this.
 
-##Creating and Deploying a Smart Contract
+## Creating and Deploying a Smart Contract
 There are several steps in creating and deploying a smart contract to a local testnet Ethereum node using Foundry. They are:
 
 Create a local testnet Ethereum node using anvil - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#a-local-testnet-ethereum-node) <br/>
