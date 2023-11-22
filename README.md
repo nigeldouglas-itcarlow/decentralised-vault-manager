@@ -612,3 +612,60 @@ Make sure to replace "YourContractName" with the actual name of your contract, a
 
 ## Tests for a Task Manager
 
+If we were to test our contract by building the project (using forge build), deploying it to a local Ethereum node (using anvil and forge script) and creating transactions that test its functionality (using cast), then our feedback loop is too slow. <br/><br/>
+It takes a long time to identify bugs and to correct them. <br/>
+We can speed up the process, by writing tests in Solidity and testing our contract using forge test. <br/>
+<br/>
+Replace ```test/Counter.t.sol``` with ```test/TaskManager.t.sol```. 
+
+Move to test directory
+```
+cd test
+```
+
+Remove the existing counter
+```
+rm Counter.t.sol
+```
+
+Download the new TaskManager solution file:
+```
+wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/decentralised-vault-manager/main/task-manager/TaskManager.t.sol
+```
+
+#### Figuring out the logic of contract code
+Use the following outline for the contract code:
+
+```
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.13;
+
+import "forge-std/Test.sol";
+import "../src/TaskManager.sol";
+
+contract TaskManagerTest is Test {
+    TaskManager public taskManager;
+    address public alice;
+    address public bob;
+
+    function setUp() public {
+        taskManager = new TaskManager();
+        alice = makeAddr("Alice");
+        bob = makeAddr("Bob");
+    }
+
+    function testInitial() public {
+        // TODO
+    }
+
+    function testSingleTask() public {
+        // TODO
+    }
+
+    function testMultipleTasks() public {
+        // TODO
+    }
+}
+```
+
+Provide implementations for the contract test functions.
