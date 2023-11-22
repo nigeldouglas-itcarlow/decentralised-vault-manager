@@ -5,12 +5,14 @@ Solidity, the most popular programming language for writing smart contracts for 
 ## Creating and Deploying a Smart Contract
 There are several steps in creating and deploying a smart contract to a local testnet Ethereum node using Foundry. They are:
 
-Create a local testnet Ethereum node using anvil - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#a-local-testnet-ethereum-node) <br/>
-Create a project for the smart contract using forge - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#create-a-forge-project) <br/> <br/>
-Write the code and tests for the smart contract in Solidity - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#write-and-test-code-in-solidity) <br/>
-Compile the code to create the EVM bytecode and run the tests using forge - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#compile-the-code-and-run-the-tests) <br/> <br/>
-Deploy the smart contract to the local testnet Ethereum node using forge - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#deploy-the-smart-contract) <br/>
-Interact with the newly deployed smart contract using cast - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#interact-with-the-deployed-smart-contract)
+| Instruction | Status
+| :---      |          ---: |
+| Create a local testnet Ethereum node using anvil | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#a-local-testnet-ethereum-node) |
+| Create a project for the smart contract using forge | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#create-a-forge-project) |
+| Write the code and tests for the smart contract in Solidity | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#write-and-test-code-in-solidity) |
+| Compile the code to create the EVM bytecode and run the tests using forge | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#compile-the-code-and-run-the-tests) |
+| Deploy the smart contract to the local testnet Ethereum node using forge | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#deploy-the-smart-contract) |
+| Interact with the newly deployed smart contract using cast | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#interact-with-the-deployed-smart-contract) |
 
 
 ### Install WSL (Windows Only)
