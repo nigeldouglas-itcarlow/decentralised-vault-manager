@@ -358,3 +358,15 @@ Check that the transaction succeeded by using cast balance to retrieve the new b
 cast balance 0x7B4531C129E1Ae801f910949eA829eE8B804eE98 \
 --rpc-url http://127.0.0.1:8545 | cast from-wei
 ```
+
+
+## Create a Forge Project
+Next, we will create a project for the smart contract using forge, yet another tool in the Foundry toolkit. <br/>
+forge initialises, builds, tests, and deploys smart contracts. We can initialise a new project using:
+```
+forge init --no-git counter-contract
+```
+The project will be placed in a directory named counter-contract. <br/>
+By default forge also initialises a ```git``` repository and uses git submodules to manage dependencies. <br/>
+If you are unfamiliar with git, and git submodules in particular, I suggest supplying the ```--no-git``` option to skip this step. <br/>
+Inspect the folder structure in ```counter-contract```. The source code is in src, third-party libraries are in ```lib```, tests are in ```test```, and scripts, including deployment scripts, are in ```script```.
