@@ -2,9 +2,8 @@
 Smart contracts can accept, store, and distribute native tokens. <br/>
 Solidity, the most popular programming language for writing smart contracts for the EVM, has built-in functionality to support this.
 
-Creating and Deploying a Smart Contract
-There are several steps in creating and deploying a smart contract to a local testnet Ethereum node
-using Foundry. They are:
+##Creating and Deploying a Smart Contract
+There are several steps in creating and deploying a smart contract to a local testnet Ethereum node using Foundry. They are:
 
 Create a local testnet Ethereum node using anvil - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#a-local-testnet-ethereum-node) <br/>
 Create a project for the smart contract using forge - [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#create-a-forge-project) <br/> <br/>
@@ -339,25 +338,30 @@ As in the previous practicals, we can use cast to create transactions. <br/>
 Let’s send 5000 testnet ether from Account #1 to Account #0:
 
 ```
-cast send 0x7B4531C129E1Ae801f910949eA829eE8B804eE98 \
---from 0x97d4bCeEe5651aD0206C603f7d3F1Cd206013821 \
+cast send 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 \
+--from 0x70997970c51812dc3a010c7d01b50e0d17dc79c8 \
 --unlocked \
 --value 5000ether \
 --rpc-url http://127.0.0.1:8545
 ```
 
-Note the following:
-• The RPC URL is HTTP rather than HTTPS. 
-If you wish you can omit the RPC URL altogether and use the default value.
-• Your addresses for Account #0 and Account #1 are the same as mine since they are generated using the same mnemonic and BIP39 derivation path.
-• You don’t need to provide a private-key. 
-This is a convenience provided by Foundry and the ```–unlocked``` flag.
+![anvil2](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/90362e5c-04ce-47a5-99be-500c9cec762e)
+
+
+Note the following: <br/>
+• The RPC URL is HTTP rather than HTTPS. <br/>
+If you wish you can omit the RPC URL altogether and use the default value. <br/>
+• Your addresses for Account #0 and Account #1 are the same as mine since they are generated using the same mnemonic and BIP39 derivation path. <br/>
+• You don’t need to provide a private-key. <br/>
+This is a convenience provided by Foundry and the ```–unlocked``` flag. <br/>
 <br/>
 Check that the transaction succeeded by using cast balance to retrieve the new balance for the address associated with Account #1:
 ```
-cast balance 0x7B4531C129E1Ae801f910949eA829eE8B804eE98 \
+cast balance 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 \
 --rpc-url http://127.0.0.1:8545 | cast from-wei
 ```
+
+![balance](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/b85be2f1-8f74-432c-b18d-a79cb1bff3c0)
 
 
 ## Create a Forge Project
