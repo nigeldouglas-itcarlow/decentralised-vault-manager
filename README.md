@@ -505,3 +505,27 @@ Again, verify that it worked. <br/>
 <br/>
 Update the smart contract so that we can either increment or decrement the counter. <br/>
 Add an appropriate test. Re-deploy the contract and verify that new the function works as expected
+
+## A Task Manager
+We would like to create a contract in Solidity called TaskManager that acts as a task manager. <br/>
+A user could call a function on this contract to create a task (addTask()), retrieve tasks (getTask()), and update the status of a task (updateStatus()). <br/>
+<br/>
+Each task has a name, a status, and an owner. <br/>
+The owner is set to the address of the user that created the task in the first place. <br/>
+<br/>
+The name can be any string and the status can be set to Todo, Doing, Done, or Canceled. <br/>
+Figure 4 shows a UML class diagram for the TaskManager contract. <br/>
+<br/>
+Even though a contract is not strictly a class since the contract is instantiated during deployment and the state persists across transactions, it is useful to visualise a
+contract in this way. <br/>
+<br/>
+Create a new smart contract project using forge. <br/>
+Replace ```src/Counter.sol``` with ```src/TaskManager.sol```. <br/>
+Use the following outline for the contract code:
+```
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.13;
+error Unauthorised();
+contract TaskManager {
+enum Status {Todo, Doing, Done, Canceled}
+```
