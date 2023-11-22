@@ -378,12 +378,86 @@ Inspect the folder structure in ```counter-contract```. The source code is in sr
 ![forge](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/4764f1a9-8525-4b6a-8dc4-f477e73afd34)
 
 ## Write and Test Code in Solidity
-Inspect the smart contract in counter-contract/src/Counter.sol. <br/>
+Inspect the smart contract in ```counter-contract/src/Counter.sol```. <br/>
 The contract is very simple: it stores a single number and provides 2 functions that can be called by anyone: <br/>
-- the first, setNumber() replaces the old number with a new number;
-- the second, increment() increases the value of the number by one.
+- the first, ```setNumber()``` replaces the old number with a new number;
+- the second, ```increment()``` increases the value of the number by one.
 
-Inspect the corresponding tests in counter-contract/test/Counter.t.sol. <br/>
+Inspect the corresponding tests in ```counter-contract/test/Counter.t.sol```. <br/>
 It constructs an instance of the Counter contract, sets its value to 0, increments the value, checks that the value is now 1, sets the value to some arbitrary number, and checks that the value now matches the new number.
 
 ![counters](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/d28f273b-e626-4502-a2d4-551ded6ebedd)
+
+
+##  Compile the Code (and Run the Tests)
+We can compile the contract using:
+```
+forge build
+```
+Under the hood, forge compiles the source code, libraries, tests, and scripts in Solidity to EVM bytecode using a Solidity compiler.
+The output is placed in out. For example, you can find the EVM bytecode for the Counter contract in ```counter-contract/out/Counter.sol/Counter.json```. <br/>
+<br/>
+It is stored under the "bytecode" key in the JSON file.
+We can test the the contract behaves as expected using:
+```
+forge test
+```
+There are two test functions, ```testIncrement()``` and ```testSetNumber()```. <br/> 
+
+1. The first is run once and passes.
+2. The second is run many times (see runs: 256 in the output) using different numbers, and passes each time.
+<br/>
+This form of testing is known as property-based testing: it is a way of testing general behaviours as opposed to isolated scenarios. <br/>
+In the output, µ (Greek letter mu) is the mean gas used across all runs and ∼ (tilde) is the median gas used across all runs. <br/>
+In fact, you can use ```forge test --gas-report``` to get a more detailed gas report on a per-function basis.
+
+![gas](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/17ce7b09-97d9-4679-80b4-b4dce5b8695d)
+
+
+## Deploy the Smart Contract
+We are ready to deploy the smart contract to our local testnet Ethereum node. <br/> 
+We need to provide some configuration and specify a deployment script to make this work.<br/>
+<br/>
+We start by providing some environment variables. <br/>
+Create a file called ```.env``` and add the following lines:
+
+```
+RPC_URL=http://127.0.0.1:8545
+PRIVATE_KEY=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+```
+Then open ```foundry.toml``` and add the following lines:
+
+```
+...
+[rpc_endpoints]
+local = "${RPC_URL}"
+```
+
+This points the RPC URL to our local testnet Ethereum node. <br/>
+Replace the contents of ```script/Counter.s.sol``` with the following:
+
+```
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.13;
+import {Script, console2} from "forge-std/Script.sol";
+import "../src/Counter.sol";
+contract CounterScript is Script {
+function setUp() public {}
+function run() public {
+uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+vm.startBroadcast(deployerPrivateKey);
+Counter ctr = new Counter();
+vm.stopBroadcast();
+}
+}
+```
+This deploys our Counter contract. The entry point is the run() function. <br/> 
+It loads in the private-key from .env. vm.startBroadcast() and vm.stopBroadcast() are ‘cheatcodes’ that record contract calls and contract deployments. <br/> 
+<br/>
+Here we simply create an instance of the Counter contract; this is broadcast to our local testnet Ethereum node as a contract deployment.
+Now we can run the deployment script:
+```
+forge script script/Counter.s.sol:CounterScript --rpc-url local --broadcast
+```
+Congratulations! We have now deployed a smart contract to our local testnet Ethereum node. <br/> 
+Check the output for the address of the Contract Account.
