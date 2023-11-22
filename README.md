@@ -386,3 +386,4 @@ The contract is very simple: it stores a single number and provides 2 functions 
 Inspect the corresponding tests in counter-contract/test/Counter.t.sol. <br/>
 It constructs an instance of the Counter contract, sets its value to 0, increments the value, checks that the value is now 1, sets the value to some arbitrary number, and checks that the value now matches the new number.
 
+![counters](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/d28f273b-e626-4502-a2d4-551ded6ebedd)
