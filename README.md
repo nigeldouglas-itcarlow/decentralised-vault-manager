@@ -676,3 +676,17 @@ contract TaskManagerTest is Test {
 ```
 
 Provide implementations for the contract test functions.
+
+### Task Manager Deployment
+You can use a similar script to the one we used in last week’s practical (```script/Counter.s.sol```) to deploy the TaskManager contract to a local Ethereum node. <br/>
+You can then interact with the contract using ```cast```.
+
+```
+forge script script/Counter.s.sol:CounterScript --rpc-url local --broadcast
+```
+
+Currently, it's throwing some errors:
+
+![compiler](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/0ee43b41-7f9c-48b5-8725-c92bbe613557)
+
+
