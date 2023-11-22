@@ -688,7 +688,7 @@ You can use a similar script to the one we used in last week’s practical (```s
 You can then interact with the contract using ```cast```.
 
 ```
-forge script script/Counter.s.sol:CounterScript --rpc-url local --broadcast
+forge script script/Counter.s.sol --rpc-url local --broadcast
 ```
 
 Currently, it's throwing some errors:
@@ -697,4 +697,4 @@ Currently, it's throwing some errors:
 
 ![relative](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/5eddaeed-18cd-4d77-b91a-ed9735689f3e)
 
-
+I added a ```run()``` function and now apparently it runs, even though its not clear right now if it does anything. lol
