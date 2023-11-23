@@ -705,3 +705,10 @@ Need to make copies of the folder for specific test scenarios:
 cp -r counter-contract counter-contract2
 ```
 
+It's working at the moment. This is good. Still unsure what I did.
+![format](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/57a48805-44e5-4318-bbc4-ccded60450ce)
+
+
+```
+cast tx 0x7c9184b75256abd2db3b36abc7e9f3ce41231a2c9010a2a350b66211ab20dab3 --rpc-url https://rpc.ankr.com/eth_sepolia
+```
