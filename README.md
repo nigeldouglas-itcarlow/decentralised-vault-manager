@@ -787,3 +787,8 @@ However, I ran into another issue during the ```build``` process.
 
 ![contracts](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/3eea7289-9dfd-4c8a-a569-741d24c19bab)
 
+Implemented ```run()``` in the ```VaultManager.sol``` file to bypass the issue:
+
+![run](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/84355248-8236-48b6-9c3a-eff488aba9b3)
+
+
