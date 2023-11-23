@@ -740,16 +740,20 @@ Public:
   getMyVaults(): uint256[]
 ```
 
-The above UML class diagram provides a clear representation of the VaultManager contract with its variables, events, modifier, and functions. It aligns with the Solidity code you described. However, I have a few suggestions to enhance the clarity and adherence to common practices:
+The above UML class diagram provides a clear representation of the ```VaultManager``` contract with its ```variables```, ```events```, ```modifier```, and ```functions```. <br/>
+It aligns with the Solidity code described in the assignment template. However, I aim to enhance the clarity and adherence to common practices:
 <br/><br/>
 <b> Visibility Keywords: </b> <br/>
-Explicitly specify the visibility keywords (public, internal, etc.) for functions and state variables in the Solidity code. The default visibility is internal, but it's good practice to be explicit.
+I must explicitly specify the visibility keywords (```public```, ```internal```, etc.) for functions and state variables in the Solidity code. <br/>
+The default visibility is internal, but it's good practice to be explicit.
 <br/><br/>
 <b> Consistent Naming: </b> <br/>
-Ensure consistent naming conventions. For example, you can use camelCase for function names, making them consistent with Solidity conventions.
+I must aim to use consistent naming conventions across all 3 files since they interact with each other. <br/>
+For example, you can use camelCase for function names, making them consistent with Solidity conventions.
 <br/><br/>
 <b> Parameter Naming: </b> <br/>
-Provide more descriptive names for function parameters. For instance, instead of _vaultId, you might consider using vaultId for better readability.
+I will try and provide more descriptive names for function parameters. <br/>
+For instance, instead of ```_vaultId```, I'd prefer to use ```vaultId``` for better readability.
 
 ## src/VaultManager.sol
 
