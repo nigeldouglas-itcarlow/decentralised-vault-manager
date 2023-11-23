@@ -787,5 +787,3 @@ However, I ran into another issue during the ```build``` process.
 
 ![contracts](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/3eea7289-9dfd-4c8a-a569-741d24c19bab)
 
-
-
