@@ -740,7 +740,7 @@ Public:
   getMyVaults(): uint256[]
 ```
 
-The above UML class diagram provides a clear representation of the ```VaultManager``` contract with its ```variables```, ```events```, ```modifier```, and ```functions```. <br/>
+The above UML class diagram provides a clear representation of the ```VaultManager``` contract with its ```variables```, ```events```, ```modifier```, and ```functions```. 
 It aligns with the Solidity code described in the assignment template. However, I aim to enhance the clarity and adherence to common practices:
 <br/><br/>
 <b> Visibility Keywords: </b> <br/>
