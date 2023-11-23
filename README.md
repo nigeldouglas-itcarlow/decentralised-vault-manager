@@ -639,7 +639,7 @@ Here we simply create an instance of the Counter contract; this is broadcast to 
 Now we can run the deployment script from the default directory. Please do not run from ```src```, ```script```, or ```test``` folders.
 
 ```
-forge script script/Counter.s.sol --rpc-url local --broadcast
+forge script script/TaskManager.s.sol --rpc-url local --broadcast
 ```
 
 #### Figuring out the logic of contract code
@@ -692,20 +692,6 @@ You can then interact with the contract using ```cast```.
 ```
 forge script script/Counter.s.sol --rpc-url local --broadcast
 ```
-
-Currently, it's throwing some errors:
-
-![compiler](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/0ee43b41-7f9c-48b5-8725-c92bbe613557)
-
-![relative](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/5eddaeed-18cd-4d77-b91a-ed9735689f3e)
-
-I added a ```run()``` function and now apparently it runs, even though its not clear right now if it does anything. lol
-
-![running](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/f7795895-1cae-430b-a2a6-327b13c8fcdf)
-
-I'm still unsure how to interact with ```cast```
-
-![error](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/20d0c830-22e2-4045-b3d4-70a1a19cbb68)
 
 The logic appears to be in the ```TaskManager.s.sol``` file located in the ```script``` directory:
 ```
