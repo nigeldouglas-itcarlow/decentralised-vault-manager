@@ -57,4 +57,9 @@ contract VaultManager {
     function getMyVaults() public view returns (uint256[] memory) {
         return vaultsByOwner[msg.sender];
     }
+
+    function run() public {
+        // Placeholder for any main logic needed in Forge script
+        // You can deploy contracts or interact with existing contracts here
+    }
 }
