@@ -774,3 +774,18 @@ Typically, Solidity contracts use the .sol extension for both source files and s
 <br/><br/>
 If you're asking about a VaultManager.s.sol file, it might be a typo or a misunderstanding. <br/>
 Solidity source files are usually named with a .sol extension, and script files (if used) might have a different extension, like .js JavaScript.
+
+### Deploying the contract
+
+If the ```VaultManager.sol``` and ```TestVaultManager.t.sol``` files are in the same ```contracts``` directory, I can use the following command:
+```
+forge script contracts/VaultManager.sol:TestVaultManager --rpc-url local --broadcast
+```
+
+This command specifies the path to the Solidity source file (```contracts/VaultManager.sol```) followed by a colon and the name of the test contract (```TestVaultManager```). <br/>
+However, I ran into another issue during the ```build``` process.
+
+![contracts](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/3eea7289-9dfd-4c8a-a569-741d24c19bab)
+
+
+
