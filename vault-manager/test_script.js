@@ -17,8 +17,11 @@ module.exports = async function ({ network, ethers }) {
 
   console.log("VaultManager deployed at:", vaultManager.address);
 
-  // Add your test logic here
-  // ...
+  // Your test logic can be included in the run() function
+  run: async () => {
+    // Add your test logic here
+    // ...
+  };
 
   console.log("Test script complete.");
 };
