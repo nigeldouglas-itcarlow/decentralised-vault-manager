@@ -712,3 +712,91 @@ It's working at the moment. This is good. Still unsure what I did.
 ```
 cast tx 0x7c9184b75256abd2db3b36abc7e9f3ce41231a2c9010a2a350b66211ab20dab3 --rpc-url https://rpc.ankr.com/eth_sepolia
 ```
+
+
+## Designing Custom UML Attributes
+
+Here is a class for a VaultManager. The contract includes at least two Solidity variables (shown as UML attributes): vaults and vaultsByOwner, and six Solidity functions (shown as UML operations: addVault(), deposit(), withdraw(), getVault(), getVaultsLength(), and getMyVaults(). So the below is a UML class diagram for a VaultManager contract, it's not the working code.
+
+```
+Public:
+  vaults: Vault[]
+  vaultsByOwner: mapping(address=>uint256[])
+Public:
+  <<event>> VaultAdded(id: uint256, owner: address)
+  <<event>> VaultDeposit(id: uint256, owner: address, amount: uint256)
+  <<event>> VaultWithdraw(id: uint256, owner: address, amount: uint256)
+  <<modifier>> onlyOwner(_vaultId: uint256)
+  addVault(): (vaultIndex: uint256)
+  deposit(_vaultId: uint256) <<onlyOwner>>
+  withdraw(_vaultId: uint256, amount: uint256) <<onlyOwner>>
+  getVault(_vaultId: uint256): (owner: address, balance: uint256)
+  getVaultsLength(): uint256
+  getMyVaults(): uint256[]
+```
+
+The above UML class diagram provides a clear representation of the VaultManager contract with its variables, events, modifier, and functions. It aligns with the Solidity code you described. However, I have a few suggestions to enhance the clarity and adherence to common practices:
+<br/><br/>
+<b> Visibility Keywords: <b/> <br/>
+Explicitly specify the visibility keywords (public, internal, etc.) for functions and state variables in the Solidity code. The default visibility is internal, but it's good practice to be explicit.
+<br/><br/>
+<b> Consistent Naming: <b/> <br/>
+Ensure consistent naming conventions. For example, you can use camelCase for function names, making them consistent with Solidity conventions.
+<br/><br/>
+<b> Parameter Naming: <b/> <br/>
+Provide more descriptive names for function parameters. For instance, instead of _vaultId, you might consider using vaultId for better readability.
+
+```
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.13;
+
+contract VaultManager {
+    struct Vault {
+        // Vault structure definition
+        // ...
+    }
+
+    Vault[] public vaults;
+    mapping(address => uint256[]) public vaultsByOwner;
+
+    event VaultAdded(uint256 indexed id, address owner);
+    event VaultDeposit(uint256 indexed id, address owner, uint256 amount);
+    event VaultWithdraw(uint256 indexed id, address owner, uint256 amount);
+
+    modifier onlyOwner(uint256 _vaultId) {
+        // TODO: Implement the onlyOwner modifier logic
+        require(msg.sender == vaults[_vaultId].owner, "Not the owner");
+        _;
+    }
+
+    function addVault() public returns (uint256 vaultIndex) {
+        // TODO: Implement the addVault function
+        // ...
+    }
+
+    function deposit(uint256 vaultId) public onlyOwner(vaultId) {
+        // TODO: Implement the deposit function
+        // ...
+    }
+
+    function withdraw(uint256 vaultId, uint256 amount) public onlyOwner(vaultId) {
+        // TODO: Implement the withdraw function
+        // ...
+    }
+
+    function getVault(uint256 vaultId) public view returns (address owner, uint256 balance) {
+        // TODO: Implement the getVault function
+        // ...
+    }
+
+    function getVaultsLength() public view returns (uint256) {
+        // TODO: Implement the getVaultsLength function
+        // ...
+    }
+
+    function getMyVaults() public view returns (uint256[] memory) {
+        // TODO: Implement the getMyVaults function
+        // ...
+    }
+}
+```
