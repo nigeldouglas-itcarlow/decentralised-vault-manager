@@ -3,8 +3,8 @@ pragma solidity ^0.8.13;
 
 contract VaultManager {
     struct Vault {
-        // Vault structure definition
-        // ...
+        address owner;
+        uint256 balance;
     }
 
     Vault[] public vaults;
@@ -14,39 +14,47 @@ contract VaultManager {
     event VaultDeposit(uint256 indexed id, address owner, uint256 amount);
     event VaultWithdraw(uint256 indexed id, address owner, uint256 amount);
 
-    modifier onlyOwner(uint256 _vaultId) {
-        // TODO: Implement the onlyOwner modifier logic
-        require(msg.sender == vaults[_vaultId].owner, "Not the owner");
+    modifier onlyOwner(uint256 vaultId) {
+        require(msg.sender == vaults[vaultId].owner, "Not the owner");
         _;
     }
 
     function addVault() public returns (uint256 vaultIndex) {
-        // TODO: Implement the addVault function
-        // ...
+        Vault memory newVault = Vault(msg.sender, 0);
+        vaultIndex = vaults.length;
+        vaults.push(newVault);
+        vaultsByOwner[msg.sender].push(vaultIndex);
+
+        emit VaultAdded(vaultIndex, msg.sender);
     }
 
-    function deposit(uint256 vaultId) public onlyOwner(vaultId) {
-        // TODO: Implement the deposit function
-        // ...
+    function deposit(uint256 vaultId) public payable onlyOwner(vaultId) {
+        require(msg.value > 0, "Deposit amount must be greater than 0");
+
+        vaults[vaultId].balance += msg.value;
+
+        emit VaultDeposit(vaultId, msg.sender, msg.value);
     }
 
     function withdraw(uint256 vaultId, uint256 amount) public onlyOwner(vaultId) {
-        // TODO: Implement the withdraw function
-        // ...
+        require(amount > 0 && amount <= vaults[vaultId].balance, "Invalid withdrawal amount");
+
+        vaults[vaultId].balance -= amount;
+        payable(msg.sender).transfer(amount);
+
+        emit VaultWithdraw(vaultId, msg.sender, amount);
     }
 
     function getVault(uint256 vaultId) public view returns (address owner, uint256 balance) {
-        // TODO: Implement the getVault function
-        // ...
+        owner = vaults[vaultId].owner;
+        balance = vaults[vaultId].balance;
     }
 
     function getVaultsLength() public view returns (uint256) {
-        // TODO: Implement the getVaultsLength function
-        // ...
+        return vaults.length;
     }
 
     function getMyVaults() public view returns (uint256[] memory) {
-        // TODO: Implement the getMyVaults function
-        // ...
+        return vaultsByOwner[msg.sender];
     }
 }
