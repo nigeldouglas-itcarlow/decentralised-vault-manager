@@ -13,7 +13,7 @@ There are several steps in creating and deploying a smart contract to a local te
 | Compile the code to create the EVM bytecode and run the tests using forge | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#compile-the-code-and-run-the-tests) |
 | Deploy the smart contract to the local testnet Ethereum node using forge | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#deploy-the-smart-contract) |
 | Interact with the newly deployed smart contract using cast | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#interact-with-the-deployed-smart-contract) |
-
+| src/VaultManager.sol | [LINK]()
 
 ### Install WSL (Windows Only)
 WSL - Windows Subsystem for Linux. <br/>
@@ -737,14 +737,16 @@ Public:
 
 The above UML class diagram provides a clear representation of the VaultManager contract with its variables, events, modifier, and functions. It aligns with the Solidity code you described. However, I have a few suggestions to enhance the clarity and adherence to common practices:
 <br/><br/>
-<b> Visibility Keywords: <b/> <br/>
+<b> Visibility Keywords: </b> <br/>
 Explicitly specify the visibility keywords (public, internal, etc.) for functions and state variables in the Solidity code. The default visibility is internal, but it's good practice to be explicit.
 <br/><br/>
-<b> Consistent Naming: <b/> <br/>
+<b> Consistent Naming: </b> <br/>
 Ensure consistent naming conventions. For example, you can use camelCase for function names, making them consistent with Solidity conventions.
 <br/><br/>
-<b> Parameter Naming: <b/> <br/>
+<b> Parameter Naming: </b> <br/>
 Provide more descriptive names for function parameters. For instance, instead of _vaultId, you might consider using vaultId for better readability.
+
+## src/VaultManager.sol
 
 ```
 // SPDX-License-Identifier: UNLICENSED
@@ -800,3 +802,4 @@ contract VaultManager {
     }
 }
 ```
+
