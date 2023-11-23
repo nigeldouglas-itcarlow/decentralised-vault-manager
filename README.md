@@ -14,8 +14,8 @@ There are several steps in creating and deploying a smart contract to a local te
 | Deploy the smart contract to the local testnet Ethereum node using forge | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#deploy-the-smart-contract) |
 | Interact with the newly deployed smart contract using cast | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#interact-with-the-deployed-smart-contract) |
 | src/VaultManager.sol | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#srcvaultmanagersol) |
-| script/VaultManager.s.sol | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#srcvaultmanagersol) |
 | test/VaultManager.t.sol | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#srcvaultmanagersol) |
+| script/VaultManager.s.sol | Not Necessary |
 
 ![lost](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/93cd389d-6dee-4424-9fec-7a23928ea419)
 
@@ -761,14 +761,16 @@ For instance, instead of ```_vaultId```, I'd prefer to use ```vaultId``` for bet
 wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/decentralised-vault-manager/main/vault-manager/VaultManager.sol
 ```
 
-## script/VaultManager.s.sol
-
-```
-wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/decentralised-vault-manager/main/vault-manager/VaultManager.s.sol
-```
-
 ## test/VaultManager.t.sol
 
 ```
 wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/decentralised-vault-manager/main/vault-manager/VaultManager.t.sol
 ```
+
+## script/VaultManager.s.sol
+
+The .s.sol file extension is not a standard or widely recognized convention in Solidity development. <br/>
+Typically, Solidity contracts use the .sol extension for both source files and script files.
+<br/><br/>
+If you're asking about a VaultManager.s.sol file, it might be a typo or a misunderstanding. <br/>
+Solidity source files are usually named with a .sol extension, and script files (if used) might have a different extension, like .js JavaScript.
