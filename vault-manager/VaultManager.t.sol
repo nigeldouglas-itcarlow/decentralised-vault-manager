@@ -20,7 +20,10 @@ contract TestVaultManager is DSTest {
         uint256 vaultId = vaultManager.addVault();
         assertEq(vaultManager.getVaultsLength(), 1, "Vault count should be 1");
         assertEq(vaultManager.getMyVaults().length, 1, "My vault count should be 1");
-        assertEq(vaultManager.getVault(vaultId).owner, address(this), "Owner should be the test contract");
+
+        // Get the owner from the tuple
+        (address owner, ) = vaultManager.getVault(vaultId);
+        assertEq(owner, address(this), "Owner should be the test contract");
     }
 
     // Test case for deposit function
