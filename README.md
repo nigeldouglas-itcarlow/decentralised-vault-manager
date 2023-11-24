@@ -15,7 +15,7 @@ There are several steps in creating and deploying a smart contract to a local te
 | Interact with the newly deployed smart contract using cast | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#interact-with-the-deployed-smart-contract) |
 | src/VaultManager.sol | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#srcvaultmanagersol) |
 | test/VaultManager.t.sol | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#srcvaultmanagersol) |
-| script/VaultManager.s.sol | Not Necessary |
+| script/VaultManager.s.sol | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager#scriptvaultmanagerssol) |
 
 ![lost](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/93cd389d-6dee-4424-9fec-7a23928ea419)
 
