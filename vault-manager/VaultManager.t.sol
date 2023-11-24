@@ -43,7 +43,7 @@ contract TestVaultManager is DSTest {
 
         // Attempt to withdraw more than deposited (should fail)
         bool success = address(vaultManager).call{ value: depositAmount + 1 }(abi.encodeWithSelector(vaultManager.withdraw.selector, vaultId, depositAmount + 1));
-        assertFalse(success, "Should fail to withdraw more than deposited");
+        assert(!success, "Should fail to withdraw more than deposited");
 
         // Withdraw valid amount and perform assertions
         uint256 initialBalance = address(this).balance;
