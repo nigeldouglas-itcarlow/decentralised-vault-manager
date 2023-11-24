@@ -777,25 +777,20 @@ However, Martin clarified that in the report spec he would had that ```VaultMana
 
 ### Deploying the contract
 
-```counter-contract``` folder hosts the ```task-manager``` scripts:
+```task-manager``` folder hosts the ```TaskManager``` scripts:
 ```
-forge script script/Counter.s.sol --rpc-url local --broadcast
-```
-
-
-```counter-contract2``` folder hosts the ```vault-manager``` scripts:
-```
-forge script contracts/VaultManager.sol:TestVaultManager --rpc-url local --broadcast
+forge script script/TaskManager.s.sol --rpc-url local --broadcast
 ```
 
-This command specifies the path to the Solidity source file (```contracts/VaultManager.sol```) followed by a colon and the name of the test contract (```TestVaultManager```). <br/>
-However, I ran into another issue during the ```build``` process.
 
-![contracts](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/3eea7289-9dfd-4c8a-a569-741d24c19bab)
+```vault-manager``` folder hosts the ```VaultManager``` scripts:
+```
+forge script script/VaultManager.s.sol --rpc-url local --broadcast
+```
 
-Implemented ```run()``` in the ```VaultManager.sol``` file to bypass the issue:
+![import](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/29104059-3740-48a7-8a49-6542107bba74)
 
-![run](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/84355248-8236-48b6-9c3a-eff488aba9b3)
+
 
 
 ## Deploying to Sepolia Blockchain
@@ -805,7 +800,7 @@ The ```--rpc-url local``` option in my Forge script command specifies the Remote
 The RPC URL is the endpoint through which Forge interacts with the blockchain network. I will need to change this to a Sepolia address. <br/>
 <br/>
 ```
-forge script contracts/VaultManager.sol --rpc-url local -- --network sepolia
+forge script script/VaultManager.s.sol --rpc-url local -- --network sepolia
 ```
 
 ```--rpc-url local```: This tells Forge to connect to a locally running blockchain. <br/>
