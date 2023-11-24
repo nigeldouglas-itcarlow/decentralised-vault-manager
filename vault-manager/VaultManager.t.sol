@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 // Importing Truffle testing utilities
-import "./VaultManager.sol";
+import "../src/VaultManager.sol";
 import "ds-test/test.sol";
 
 // Test contract for VaultManager
