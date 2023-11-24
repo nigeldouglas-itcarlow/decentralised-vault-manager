@@ -12,7 +12,9 @@ contract VaultManagerScript is Script {
         vm.startBroadcast(deployerPrivateKey);
         
         VaultManager ctr = new VaultManager();
-        
+
+        // Additional setup or interactions can be added here if needed
+
         vm.stopBroadcast();
     }
 }
