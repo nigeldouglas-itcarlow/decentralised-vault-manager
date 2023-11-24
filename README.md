@@ -792,3 +792,34 @@ Implemented ```run()``` in the ```VaultManager.sol``` file to bypass the issue:
 ![run](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/84355248-8236-48b6-9c3a-eff488aba9b3)
 
 
+## Deploying to Sepolia Blockchain
+
+
+The ```--rpc-url local``` option in my Forge script command specifies the Remote Procedure URL for connecting to a local blockchain. <br/>
+The RPC URL is the endpoint through which Forge interacts with the blockchain network. I will need to change this to a Sepolia address. <br/>
+<br/>
+```
+forge script contracts/VaultManager.sol --rpc-url local -- --network sepolia
+```
+
+```--rpc-url local```: This tells Forge to connect to a locally running blockchain. <br/>
+I believe my local blockchain node is on Hardhat Network is running at the default RPC endpoint (http://localhost:8545).
+<br/><br/>
+```-- --network sepolia```: The double dash (--) is used to pass additional options directly to Forge. <br/>
+In my case, I want to specify the Sepolia network as my target.
+<br/><br/>
+When I removed ```--rpc-url local```-, Forge may have defaulted to some other RPC endpoint, possibly a default local setup. <br/>
+The gas used is a measure of computational effort during contract execution. I am trying to avoid spending all my Sepolia on tests. <br/> 
+The gas spent indicates how much "work" was done on the blockchain during the contract deployment or transaction. Meaning a deployment has occured.
+
+![sepolia](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/36ef5293-aab8-470e-8ead-be2734fa542b)
+
+Since I'm like still targeting a local blockchain and the script is still executing successfully, it's possible that Forge is using a default local RPC endpoint. <br/>
+To be certain about which RPC endpoint Forge is connecting to, I could explicitly specify the RPC URL for your local blockchain. For example:
+
+```
+forge script contracts/VaultManager.sol --rpc-url http://localhost:8545 -- --network sepolia
+```
+
+However, I need to replace ```http://localhost:8545``` with the actual RPC URL of my local blockchain node.
+I do not know this information yet. And since we are setting-up a Sepolia blockchain, I might need to provide the correct RPC URL for Sepolia, as connecting to a local RPC URL might not be suitable for a different blockchain network.
