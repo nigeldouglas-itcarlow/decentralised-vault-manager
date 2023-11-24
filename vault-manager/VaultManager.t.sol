@@ -2,9 +2,8 @@
 pragma solidity ^0.8.13;
 
 // Importing Truffle testing utilities
-import "truffle/Assert.sol";
-import "truffle/DeployedAddresses.sol";
 import "./VaultManager.sol";
+import "ds-test/test.sol";
 
 // Test contract for VaultManager
 contract TestVaultManager {
