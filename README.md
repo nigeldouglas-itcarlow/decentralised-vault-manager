@@ -773,8 +773,9 @@ wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/decentralised-vault
 The .s.sol file extension is not a standard or widely recognized convention in Solidity development. <br/>
 Typically, Solidity contracts use the .sol extension for both source files and script files.
 <br/><br/>
-If you're asking about a VaultManager.s.sol file, it might be a typo or a misunderstanding. <br/>
-Solidity source files are usually named with a .sol extension, and script files (if used) might have a different extension, like .js JavaScript.
+However, Martin clarified that in the report spec he would had that ```VaultManager.s.sol``` is also needed to do the deployment. <br/>
+While the ```t.sol``` and ```s.sol``` extensions are not a standard convention for Solidity, they are a convention used by Foundry. <br/>
+The various toolkits, such as Foundry, will add their own conventions. I didn't consider this on my initial deployment attempt.
 
 ### Deploying the contract
 
