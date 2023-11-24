@@ -777,7 +777,13 @@ However, Martin clarified that in the report spec he would had that ```VaultMana
 
 ### Deploying the contract
 
-If the ```VaultManager.sol``` and ```TestVaultManager.t.sol``` files are in the same ```contracts``` directory, I can use the following command:
+```counter-contract``` folder hosts the ```task-manager``` scripts:
+```
+forge script script/Counter.s.sol --rpc-url local --broadcast
+```
+
+
+```counter-contract2``` folder hosts the ```vault-manager``` scripts:
 ```
 forge script contracts/VaultManager.sol:TestVaultManager --rpc-url local --broadcast
 ```
