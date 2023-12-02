@@ -560,63 +560,9 @@ wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/decentralised-vault
 
 ![taskmanager](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/ba8e0431-21c5-4aa7-9d18-778a23f91ce6)
 
-Provide implementations for the contract functions and the onlyOwner modifier. <br/>
-The modifier should restrict who can call a function:
-
-```
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
-
-contract YourContractName {
-
-    enum Status { Pending, InProgress, Completed }
-
-    struct Task {
-        string name;
-        Status status;
-        address owner;
-    }
-
-    Task[] public tasks;
-    mapping(address => uint256[]) public tasksByOwner;
-
-    event TaskAdded(uint256 id, string name, Status status, address owner);
-
-    modifier onlyOwner(uint256 _taskId) {
-        require(tasks[_taskId].owner == msg.sender, "Not the task owner");
-        _;
-    }
-
-    function addTask(string memory _name, Status _status) public returns (uint256 index) {
-        Task memory newTask = Task(_name, _status, msg.sender);
-        index = tasks.length;
-        tasks.push(newTask);
-        tasksByOwner[msg.sender].push(index);
-        emit TaskAdded(index, _name, _status, msg.sender);
-    }
-
-    function updateStatus(uint256 _taskId, Status _status) public onlyOwner(_taskId) {
-        tasks[_taskId].status = _status;
-    }
-
-    function getTask(uint256 _taskId) public view returns (string memory name, Status status, address owner) {
-        require(_taskId < tasks.length, "Task does not exist");
-        Task memory task = tasks[_taskId];
-        return (task.name, task.status, task.owner);
-    }
-
-    function getTasksLength() public view returns (uint256) {
-        return tasks.length;
-    }
-
-    function getMyTasks() public view returns (uint256[] memory) {
-        return tasksByOwner[msg.sender];
-    }
-}
-```
-
-Please note that I made some assumptions about the missing parts of your code. <br/>
-Make sure to replace "YourContractName" with the actual name of your contract, and customize the code according to your specific requirements.
+Provide implementations for the contract functions and the ```onlyOwner``` modifier. <br/>
+The modifier should restrict who can call a function <br/>
+Make sure to replace ```YourContractName``` with the actual name of your contract, and customize the code according to your specific requirements.
 
 ## Tests for a Task Manager
 
@@ -643,53 +589,6 @@ wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/decentralised-vault
 
 Here we simply create an instance of the Counter contract; this is broadcast to our local testnet Ethereum node as a contract deployment. <br/>
 Now we can run the deployment script from the default directory. Please do not run from ```src```, ```script```, or ```test``` folders.
-
-```
-forge script script/TaskManager.s.sol --rpc-url local --broadcast
-```
-
-#### Figuring out the logic of contract code
-Use the following outline for the contract code:
-
-```
-// SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
-
-import "forge-std/Test.sol";
-import "../src/TaskManager.sol";
-
-contract TaskManagerTest is Test {
-    TaskManager public taskManager;
-    address public alice;
-    address public bob;
-
-    function setUp() public {
-        taskManager = new TaskManager();
-        alice = makeAddr("Alice");
-        bob = makeAddr("Bob");
-    }
-
-    function run() public { // Implement the run function
-        testInitial();
-        testSingleTask();
-        testMultipleTasks();
-    }
-
-    function testInitial() public {
-        // TODO
-    }
-
-    function testSingleTask() public {
-        // TODO
-    }
-
-    function testMultipleTasks() public {
-        // TODO
-    }
-}
-```
-
-Provide implementations for the contract test functions.
 
 ### Task Manager Deployment
 You can use a similar script to the one we used in last week’s practical (```script/Counter.s.sol```) to deploy the TaskManager contract to a local Ethereum node. <br/>
@@ -745,11 +644,11 @@ The above UML class diagram provides a clear representation of the ```VaultManag
 It aligns with the Solidity code described in the assignment template. However, I aim to enhance the clarity and adherence to common practices:
 <br/><br/>
 <b> Visibility Keywords: </b> <br/>
-I must explicitly specify the visibility keywords (```public```, ```internal```, etc.) for functions and state variables in the Solidity code. <br/>
+I must explicitly specify the visibility keywords (```public```, ```internal```, etc.) for functions and state variables in the Solidity code. 
 The default visibility is internal, but it's good practice to be explicit.
 <br/><br/>
 <b> Consistent Naming: </b> <br/>
-I must aim to use consistent naming conventions across all 3 files since they interact with each other. <br/>
+I must aim to use consistent naming conventions across all 3 files since they interact with each other. 
 For example, you can use camelCase for function names, making them consistent with Solidity conventions.
 <br/><br/>
 <b> Parameter Naming: </b> <br/>
@@ -770,27 +669,9 @@ wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/decentralised-vault
 
 ## script/VaultManager.s.sol
 
-The .s.sol file extension is not a standard or widely recognized convention in Solidity development. <br/>
-Typically, Solidity contracts use the .sol extension for both source files and script files.
-<br/><br/>
-However, Martin clarified that in the report spec he would had that ```VaultManager.s.sol``` is also needed to do the deployment. While the ```t.sol``` and ```s.sol``` extensions are not a standard convention for Solidity, they are a convention used by Foundry. The various toolkits, such as Foundry, will add their own conventions. I didn't consider this on my initial deployment attempt.
-
-### Deploying the contract
-
-```task-manager``` folder hosts the ```TaskManager``` scripts:
 ```
-forge script script/TaskManager.s.sol --rpc-url local --broadcast
+wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/decentralised-vault-manager/main/vault-manager/VaultManager.s.sol
 ```
-
-
-```vault-manager``` folder hosts the ```VaultManager``` scripts:
-```
-forge script script/VaultManager.s.sol --rpc-url local --broadcast
-```
-
-![import](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/29104059-3740-48a7-8a49-6542107bba74)
-
-
 
 
 ## Deploying to Sepolia Blockchain
