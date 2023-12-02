@@ -44,10 +44,8 @@ contract TaskManagerTest is Test {
     function testMultipleTasks() public {
         vm.prank(alice);
         taskManager.addTask("foo", TaskManager.Status.Todo);
-
         vm.prank(bob);
         taskManager.addTask("bar", TaskManager.Status.Canceled);
-
         vm.prank(alice);
         taskManager.addTask("baz", TaskManager.Status.Done);
 
