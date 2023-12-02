@@ -1,0 +1,6 @@
+foundryup //start all the tools such as 'forge' and 'anvil'
+anvil //start the local ethereum network
+
+forge build //compiles the application
+forge script script/TaskManager.s.sol:TaskManagerScript --rpc-url local --broadcast //start the script
+
