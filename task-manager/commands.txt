@@ -3,4 +3,11 @@ anvil //start the local ethereum network
 
 forge build //compiles the application
 forge script script/TaskManager.s.sol:TaskManagerScript --rpc-url local --broadcast //start the script
+forge test
+
+// Once we have deployed our smart contract we can interact with it directly using cast.
+// To retrieve the current value stored by the VaultManager, we can use:
+
+cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "number()(uint256)" \
+--rpc-url local
 
