@@ -1,0 +1,9 @@
+foundryup
+anvil
+
+forge build 
+forge test
+forge script script/VaultManager.s.sol:VaultManagerScript --rpc-url local --broadcast
+
+cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "number()(uint256)" \
+--rpc-url local
