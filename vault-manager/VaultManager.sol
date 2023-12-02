@@ -1,65 +1,71 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-error Unauthorised();
-
-contract TaskManager {
-    enum Status {Todo, Doing, Done, Canceled}
-
-    struct Task {
-        string name;
-        Status status;
+contract VaultManager {
+    // Vault struct
+    struct Vault {
+        uint256 id;
         address owner;
+        uint256 balance;
     }
 
-    Task[] public tasks;
+    // Vaults array
+    Vault[] public vaults;
 
-    // tasksByOwner:
-    // 0x3521678 -> [0]
-    // 0xf6adf88 -> [1, 3]
-    // 0x345627a -> [2]
-    mapping (address => uint256[]) public tasksByOwner;
+    // Mapping to track vaults by owner
+    mapping(address => uint256[]) public vaultsByOwner;
 
-    event TaskAdded(uint256 id, string name, Status status, address owner);
+    // Events
+    event VaultAdded(uint256 id, address owner);
+    event VaultDeposit(uint256 id, address owner, uint256 amount);
+    event VaultWithdraw(uint256 id, address owner, uint256 amount);
 
-    modifier onlyOwner (uint256 _taskId) {
-        if (tasks[_taskId].owner != msg.sender) {
-            revert Unauthorised();
-        }
-
+    // Modifier to ensure only the owner can perform certain operations
+    modifier onlyOwner(uint256 _vaultId) {
+        require(vaults[_vaultId].owner == msg.sender, "Unauthorized");
         _;
     }
 
-    function addTask(string memory _name, Status _status) public returns (uint256 taskId) {
-
-        Task memory task = Task({
-            name: _name,
-            status: _status,
-            owner: msg.sender
+    // Function to add a new vault
+    function addVault() public returns (uint256 vaultIndex) {
+        Vault memory newVault = Vault({
+            id: vaults.length,
+            owner: msg.sender,
+            balance: 0
         });
 
-        tasks.push(task);
-        taskId = tasks.length - 1;
-        tasksByOwner[msg.sender].push(taskId);
-        emit TaskAdded(taskId, _name, _status, msg.sender);
+        vaults.push(newVault);
+        vaultIndex = vaults.length - 1;
+        vaultsByOwner[msg.sender].push(vaultIndex);
+
+        emit VaultAdded(vaultIndex, msg.sender);
     }
 
-    function updateStatus(uint256 _taskId, Status _status) public onlyOwner(_taskId) {
-        tasks[_taskId].status = _status;
+    // Function to deposit into a vault
+    function deposit(uint256 _vaultId) public onlyOwner(_vaultId) {
+        // Implementation for deposit
+        emit VaultDeposit(_vaultId, msg.sender, 0); // Placeholder, modify as needed
     }
 
-    function getTask(uint256 _taskId) public view returns (string memory name, Status
-                                                           status, address owner) {
-        name = tasks[_taskId].name;
-        status = tasks[_taskId].status;
-        owner = tasks[_taskId].owner;
+    // Function to withdraw from a vault
+    function withdraw(uint256 _vaultId, uint256 _amount) public onlyOwner(_vaultId) {
+        // Implementation for withdrawal
+        emit VaultWithdraw(_vaultId, msg.sender, _amount); // Placeholder, modify as needed
     }
 
-    function getTasksLength() public view returns (uint256) {
-        return tasks.length;
+    // Function to get information about a specific vault
+    function getVault(uint256 _vaultId) public view returns (address owner, uint256 balance) {
+        owner = vaults[_vaultId].owner;
+        balance = vaults[_vaultId].balance;
     }
 
-    function getMyTasks() public view returns (uint256[] memory) {
-        return tasksByOwner[msg.sender];
+    // Function to get the number of vaults
+    function getVaultsLength() public view returns (uint256) {
+        return vaults.length;
+    }
+
+    // Function to get the vault IDs owned by the caller
+    function getMyVaults() public view returns (uint256[] memory) {
+        return vaultsByOwner[msg.sender];
     }
 }
