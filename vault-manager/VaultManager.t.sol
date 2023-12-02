@@ -1,68 +1,65 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-// Importing Truffle testing utilities
-import "../src/VaultManager.sol";
-import "ds-test/test.sol";
+import "forge-std/Test.sol";
+import "../src/TaskManager.sol";
 
-// Test contract for VaultManager
-contract TestVaultManager is DSTest {
-    VaultManager vaultManager;
+contract TaskManagerTest is Test {
+    TaskManager public taskManager;
+    address public alice;
+    address public bob;
 
-    // Runs before each test function
     function setUp() public {
-        vaultManager = new VaultManager();
+        taskManager = new TaskManager();
+        alice = makeAddr("Alice");
+        bob = makeAddr("Bob");
     }
 
-    // Test case for addVault function
-    function testAddVault() public {
-        // Add a vault and perform assertions
-        uint256 vaultId = vaultManager.addVault();
-        assertEq(vaultManager.getVaultsLength(), 1, "Vault count should be 1");
-        assertEq(vaultManager.getMyVaults().length, 1, "My vault count should be 1");
-
-        // Get the owner from the tuple
-        (address owner, ) = vaultManager.getVault(vaultId);
-        assertEq(owner, address(this), "Owner should be the test contract");
+    function testInitial() public {
+        uint256 tasksLength = taskManager.getTasksLength();
+        assertEq(tasksLength, 0);
     }
 
-    // Test case for deposit function
-    function testDeposit() public {
-        uint256 vaultId = vaultManager.addVault();
-        uint256 initialBalance = address(this).balance;
-        uint256 depositAmount = 100;
+    function testSingleTask() public {
+        vm.prank(alice);
+        taskManager.addTask("foo", TaskManager.Status.Todo);
+        uint256 tasksLength = taskManager.getTasksLength();
+        assertEq(tasksLength, 1);
 
-        // Deposit into the vault and perform assertions
-        vaultManager.deposit{ value: depositAmount }(vaultId);
-        assertEq(vaultManager.getVault(vaultId).balance, depositAmount, "Vault balance should be equal to deposit amount");
-        assertEq(address(this).balance, initialBalance - depositAmount, "Contract balance should be reduced by deposit amount");
+        (string memory name, TaskManager.Status status, address owner) = taskManager.getTask(0);
+        assertEq(name, "foo");
+        assertTrue(status == TaskManager.Status.Todo);
+        assertEq(owner, alice);
+
+        vm.prank(alice);
+        taskManager.updateStatus(0, TaskManager.Status.Doing);
+        (, TaskManager.Status updatedStatus,) = taskManager.getTask(0);
+        assertTrue(updatedStatus == TaskManager.Status.Doing);
+
+        vm.prank(bob);
+        vm.expectRevert(Unauthorised.selector);
+        taskManager.updateStatus(0, TaskManager.Status.Todo);
     }
 
-    // Test case for withdraw function
-    function testWithdraw() public {
-        uint256 vaultId = vaultManager.addVault();
-        uint256 depositAmount = 100;
-        vaultManager.deposit{ value: depositAmount }(vaultId);
+    function testMultipleTasks() public {
+        vm.prank(alice);
+        taskManager.addTask("foo", TaskManager.Status.Todo);
+        vm.prank(bob);
+        taskManager.addTask("bar", TaskManager.Status.Canceled);
+        vm.prank(alice);
+        taskManager.addTask("baz", TaskManager.Status.Done);
 
-        // Attempt to withdraw more than deposited (should fail)
-        bool success = address(vaultManager).call{ value: depositAmount + 1 }(abi.encodeWithSelector(vaultManager.withdraw.selector, vaultId, depositAmount + 1));
-        assert(!success, "Should fail to withdraw more than deposited");
+        uint256 tasksLength = taskManager.getTasksLength();
+        assertEq(tasksLength, 3);
 
-        // Withdraw valid amount and perform assertions
-        uint256 initialBalance = address(this).balance;
-        vaultManager.withdraw(vaultId, depositAmount);
-        assertEq(vaultManager.getVault(vaultId).balance, 0, "Vault balance should be 0 after withdrawal");
-        assertEq(address(this).balance, initialBalance, "Contract balance should be restored after withdrawal");
-    }
+        vm.prank(alice);
+        uint256[] memory aliceTasks = taskManager.getMyTasks();
+        uint256 aliceTasksLength = aliceTasks.length;
+        assertEq(aliceTasksLength, 2);
 
-    // Additional tests for ownership constraints can be added here
-
-    // Ensure events are emitted as expected
-    function testEvents() public {
-        uint256 vaultId = vaultManager.addVault();
-        bool success = address(vaultManager).call{ value: 100 }(abi.encodeWithSelector(vaultManager.deposit.selector, vaultId));
-        assertTrue(success, "Deposit should succeed");
-        success = address(vaultManager).call(abi.encodeWithSelector(vaultManager.withdraw.selector, vaultId, 50));
-        assertTrue(success, "Withdraw should succeed");
+        vm.prank(bob);
+        uint256[] memory bobTasks = taskManager.getMyTasks();
+        uint256 bobTasksLength = bobTasks.length;
+        assertEq(bobTasksLength, 1);
     }
 }
