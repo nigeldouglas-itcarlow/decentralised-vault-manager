@@ -6,10 +6,12 @@ forge test
 forge script script/VaultManager.s.sol:VaultManagerScript --rpc-url local --broadcast
 cast state 0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141 balance --rpc-url local
 
+## Send Funds and Check Balance on Contract
+
 cast send 0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141 \
 --from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 \
 --unlocked \
---value 5000ether \
+--value 40ether \
 --rpc-url local
 
 cast balance 0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141 \
@@ -20,7 +22,7 @@ cast balance 0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141 \
 cast call 0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141 "number()(uint256)" \
 --rpc-url local
 
-cast send 0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141 "increment()()" \
+cast send 0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141 "deposit()()" \
 --from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 \
 --unlocked \
 --rpc-url local
