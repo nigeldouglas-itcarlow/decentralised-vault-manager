@@ -16,7 +16,7 @@ There are several steps in creating and deploying a smart contract to a local te
 | src/VaultManager.sol | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#srcvaultmanagersol) |
 | test/VaultManager.t.sol | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/blob/main/README.md#srcvaultmanagersol) |
 | script/VaultManager.s.sol | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager#scriptvaultmanagerssol) |
-| Deploying to the Sepolia Blockchain | [Link](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager#scriptvaultmanagerssol) |
+| Deploying to the Sepolia Blockchain | [LINK](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager#scriptvaultmanagerssol) |
 
 ![lost](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/93cd389d-6dee-4424-9fec-7a23928ea419)
 
