@@ -3,8 +3,12 @@ anvil
 
 forge build 
 forge test
+
 forge script script/VaultManager.s.sol:VaultManagerScript --rpc-url local --broadcast
+forge script script/VaultManager.s.sol:VaultManagerScript --rpc-url https://rpc.ankr.com/eth_sepolia --broadcast
+
 cast balance 0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141 --rpc-url local
+cast balance 0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141 --rpc-url https://rpc.ankr.com/eth_sepolia
 
 ## Send Funds and Check Balance on Contract (on Sepolia)
 
