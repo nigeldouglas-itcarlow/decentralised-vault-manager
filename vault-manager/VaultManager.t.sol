@@ -18,5 +18,33 @@ contract VaultManagerTest is Test {
         assertEq(vaultsLength, 0);
     }
 
-    // Add more test cases as needed
+    // Rename the function to start with "test"
+    function testAddVault() public {
+        // TODO
+    }
+
+    // Rename the function to start with "test"
+    function testDeposit() public {
+        // TODO
+    }
+
+    // Rename the function to start with "test"
+    function testWithdraw() public {
+        // TODO
+    }
+
+    // Rename the function to start with "test"
+    function testGetVault() public {
+        // TODO
+    }
+
+    // Rename the function to start with "test"
+    function testGetVaultsLength() public {
+        // TODO
+    }
+
+    // Rename the function to start with "test"
+    function testGetMyVaults() public {
+        // TODO
+    }
 }
