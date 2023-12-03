@@ -18,33 +18,63 @@ contract VaultManagerTest is Test {
         assertEq(vaultsLength, 0);
     }
 
-    // Rename the function to start with "test"
     function testAddVault() public {
-        // TODO
+        uint256 initialVaultsLength = vaultManager.getVaultsLength();
+        vaultManager.addVault();
+        uint256 newVaultsLength = vaultManager.getVaultsLength();
+
+        assertEq(newVaultsLength, initialVaultsLength + 1, "Vault not added successfully");
     }
 
-    // Rename the function to start with "test"
     function testDeposit() public {
-        // TODO
+        uint256 vaultId = vaultManager.addVault();
+        (address owner, uint256 initialBalance) = vaultManager.getVault(vaultId);
+
+        uint256 depositAmount = 100;
+
+        (bool success, ) = payable(address(vaultManager)).call{value: depositAmount}("");
+        require(success, "Deposit failed");
+
+        (address newOwner, uint256 newBalance) = vaultManager.getVault(vaultId);
+
+        assertEq(newBalance, initialBalance + depositAmount, "Deposit not processed correctly");
     }
 
-    // Rename the function to start with "test"
     function testWithdraw() public {
-        // TODO
+        uint256 vaultId = vaultManager.addVault();
+        (address owner, uint256 initialBalance) = vaultManager.getVault(vaultId);
+
+        uint256 withdrawAmount = 50;
+
+        (bool success, ) = payable(address(vaultManager)).call{value: withdrawAmount}("");
+        require(success, "Withdrawal failed");
+
+        (address newOwner, uint256 newBalance) = vaultManager.getVault(vaultId);
+
+        assertEq(newBalance, 0, "Withdraw not processed correctly");
     }
 
-    // Rename the function to start with "test"
     function testGetVault() public {
-        // TODO
+        uint256 vaultId = vaultManager.addVault();
+        (address owner, uint256 vaultBalance) = vaultManager.getVault(vaultId);
+
+        assertEq(owner, address(this), "Owner should be the test contract address");
+        assertEq(vaultBalance, 0, "Initial balance should be 0");
     }
 
-    // Rename the function to start with "test"
     function testGetVaultsLength() public {
-        // TODO
+        uint256 initialVaultsLength = vaultManager.getVaultsLength();
+        vaultManager.addVault();
+        uint256 newVaultsLength = vaultManager.getVaultsLength();
+
+        assertEq(newVaultsLength, initialVaultsLength + 1, "Vaults length not updated correctly");
     }
 
-    // Rename the function to start with "test"
     function testGetMyVaults() public {
-        // TODO
+        uint256 vaultId = vaultManager.addVault();
+        uint256[] memory myVaults = vaultManager.getMyVaults();
+
+        assertEq(myVaults.length, 1, "There should be 1 vault owned by the test contract");
+        assertEq(myVaults[0], vaultId, "Incorrect vault ID in getMyVaults result");
     }
 }
