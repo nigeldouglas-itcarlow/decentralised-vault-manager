@@ -15,7 +15,7 @@ cast send 0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141 \
 --rpc-url https://rpc.ankr.com/eth_sepolia | cast from-wei
 
 cast balance 0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141 \
---rpc-url local | cast from-wei
+--rpc-url https://rpc.ankr.com/eth_sepolia | cast from-wei
 
 ## Interact with deployed smart contract
 
