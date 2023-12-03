@@ -681,7 +681,7 @@ The ```--rpc-url local``` option in my Forge script command specifies the Remote
 The RPC URL is the endpoint through which Forge interacts with the blockchain network. I will need to change this to a Sepolia address. <br/>
 <br/>
 ```
-forge script script/VaultManager.s.sol --rpc-url local -- --network sepolia
+forge script script/VaultManager.s.sol:VaultManagerScript --rpc-url local -- --network sepolia
 ```
 
 ```--rpc-url local```: This tells Forge to connect to a locally running blockchain. <br/>
