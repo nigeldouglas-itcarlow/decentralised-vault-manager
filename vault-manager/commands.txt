@@ -4,7 +4,7 @@ anvil
 forge build 
 forge test
 forge script script/VaultManager.s.sol:VaultManagerScript --rpc-url local --broadcast
-cast state 0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141 balance --rpc-url local
+cast balance 0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141 --rpc-url local
 
 ## Send Funds and Check Balance on Contract
 
