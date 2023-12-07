@@ -8,6 +8,15 @@ contract VaultManagerScript is Script {
     function setUp() public {}
 
     function run() public {
+        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+        vm.startBroadcast(deployerPrivateKey);
+        VaultManager ctr = new VaultManager();
+        vm.stopBroadcast();
+        //Console output for the contract address
+        console2.log("Contract Address:", address(ctr));
+   }
+
+    function run2() public {
         VaultManager vm = new VaultManager();
         console2.log("Contract Address:", address(vm));
         console2.log("cast call", address(vm), "--rpc-url local");
