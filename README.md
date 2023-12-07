@@ -680,3 +680,12 @@ I am now successful in the deployment, but I need the required coin to pay the g
 
 ![withdraw](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/e9b1f24d-e29c-4715-aa9d-f1286934fb36)
 
+Irrespective of my limited coin to pay for the Gas fees, I was successfully able to deploy the contract to local HardHat onchain execution
+```
+forge script script/VaultManager.s.sol:VaultManagerScript --rpc-url local --broadcast
+```
+
+![local](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/e682cc9c-3fa7-4a98-b081-a6e3ab4b5d62)
+
+
+
