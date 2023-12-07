@@ -42,15 +42,24 @@ contract VaultManager {
     }
 
     // Function to deposit into a vault
-    function deposit(uint256 _vaultId) public onlyOwner(_vaultId) {
-        // Implementation for deposit
-        emit VaultDeposit(_vaultId, msg.sender, 0); // Placeholder, modify as needed
+    function deposit(uint256 _vaultId) public onlyOwner(_vaultId) payable {
+        require(msg.value > 0, "Deposit amount must be greater than 0");
+
+        vaults[_vaultId].balance += msg.value;
+
+        emit VaultDeposit(_vaultId, msg.sender, msg.value);
     }
 
     // Function to withdraw from a vault
     function withdraw(uint256 _vaultId, uint256 _amount) public onlyOwner(_vaultId) {
-        // Implementation for withdrawal
-        emit VaultWithdraw(_vaultId, msg.sender, _amount); // Placeholder, modify as needed
+        require(_amount > 0 && _amount <= vaults[_vaultId].balance, "Invalid withdrawal amount");
+
+        vaults[_vaultId].balance -= _amount;
+
+        // Transfer Ether to the owner
+        payable(msg.sender).transfer(_amount);
+
+        emit VaultWithdraw(_vaultId, msg.sender, _amount);
     }
 
     // Function to get information about a specific vault
