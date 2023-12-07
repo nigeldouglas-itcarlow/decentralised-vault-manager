@@ -26,8 +26,10 @@ contract VaultManager {
         _;
     }
 
-    // Function to add a new vault
-    function addVault() public returns (uint256 vaultIndex) {
+    // Function to add a new vault with a bounty
+    function addVaultWithBounty() payable public returns (uint256 vaultIndex) {
+        require(msg.value > 0, "Bounty amount must be greater than 0");
+
         Vault memory newVault = Vault({
             id: vaults.length,
             owner: msg.sender,
@@ -38,7 +40,11 @@ contract VaultManager {
         vaultIndex = vaults.length - 1;
         vaultsByOwner[msg.sender].push(vaultIndex);
 
+        // Update the bounty for the new vault
+        vaults[vaultIndex].balance += msg.value;
+
         emit VaultAdded(vaultIndex, msg.sender);
+        emit VaultDeposit(vaultIndex, msg.sender, msg.value);
     }
 
     // Function to deposit into a vault
