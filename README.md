@@ -676,33 +676,7 @@ wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/decentralised-vault
 
 ## Deploying to Sepolia Blockchain
 
+I am now successful in the deployment, but I need the required coin to pay the gas fees to deploy the contract to Sepolia:
 
-The ```--rpc-url local``` option in my Forge script command specifies the Remote Procedure URL for connecting to a local blockchain. <br/>
-The RPC URL is the endpoint through which Forge interacts with the blockchain network. I will need to change this to a Sepolia address. <br/>
-<br/>
-```
-forge script script/VaultManager.s.sol:VaultManagerScript --rpc-url local -- --network sepolia
-```
+![withdraw](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/e9b1f24d-e29c-4715-aa9d-f1286934fb36)
 
-```--rpc-url local```: This tells Forge to connect to a locally running blockchain. <br/>
-I believe my local blockchain node is on Hardhat Network is running at the default RPC endpoint (http://localhost:8545).
-<br/><br/>
-```-- --network sepolia```: The double dash (--) is used to pass additional options directly to Forge. <br/>
-In my case, I want to specify the Sepolia network as my target.
-<br/><br/>
-When I removed ```--rpc-url local```-, Forge may have defaulted to some other RPC endpoint, possibly a default local setup. <br/>
-The gas used is a measure of computational effort during contract execution. I am trying to avoid spending all my Sepolia on tests. <br/> 
-The gas spent indicates how much "work" was done on the blockchain during the contract deployment or transaction. Meaning a deployment has occured.
-
-![sepolia](https://github.com/nigeldouglas-itcarlow/decentralised-vault-manager/assets/126002808/3aa00a6c-eed5-4c6d-b5ef-5f31db0e997a)
-
-
-Since I'm like still targeting a local blockchain and the script is still executing successfully, it's possible that Forge is using a default local RPC endpoint. <br/>
-To be certain about which RPC endpoint Forge is connecting to, I could explicitly specify the RPC URL for your local blockchain. For example:
-
-```
-forge script contracts/VaultManager.sol --rpc-url http://127.0.0.1:8545 -- --network sepolia
-```
-
-However, I need to replace ```http://127.0.0.1:8545``` with the actual RPC URL of my local blockchain node.
-I do not know this information yet. And since we are setting-up a Sepolia blockchain, I might need to provide the correct RPC URL for Sepolia, as connecting to a local RPC URL might not be suitable for a different blockchain network.
