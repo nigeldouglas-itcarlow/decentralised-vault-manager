@@ -7,8 +7,11 @@ forge test
 forge script script/VaultManager.s.sol:VaultManagerScript --rpc-url local --broadcast
 forge script script/VaultManager.s.sol:VaultManagerScript --rpc-url https://rpc.ankr.com/eth_sepolia --broadcast
 
+## Balance of the local VM address
 cast balance 0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141 --rpc-url local
 cast balance 0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141 --rpc-url https://rpc.ankr.com/eth_sepolia
+## Balance of the contract address:
+cast balance 0x90fdD9249005aEf633d1Da1772f32A65Ec62D5bf --rpc-url https://rpc.ankr.com/eth_sepolia
 
 ## Send Funds and Check Balance on Contract (on Sepolia)
 
