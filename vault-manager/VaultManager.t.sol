@@ -18,60 +18,43 @@ contract VaultManagerTest is Test {
         assertEq(vaultsLength, 0);
     }
 
-    function testAddVault() public {
-        uint256 initialVaultsLength = vaultManager.getVaultsLength();
-        vaultManager.addVault();
-        uint256 newVaultsLength = vaultManager.getVaultsLength();
+    // Commenting out the testAddVault function
+    // function testAddVault() public {
+    //     uint256 initialVaultsLength = vaultManager.getVaultsLength();
+    //     vaultManager.addVault();
+    //     uint256 newVaultsLength = vaultManager.getVaultsLength();
 
-        assertEq(newVaultsLength, initialVaultsLength + 1, "Vault not added successfully");
+    //     assertEq(newVaultsLength, initialVaultsLength + 1, "Vault not added successfully");
+    // }
+
+    function testAddVaultWithBounty() public payable {
+        uint256 initialVaultsLength = vaultManager.getVaultsLength();
+        uint256 bountyAmount = 100;
+
+        vaultManager.addVaultWithBounty{value: bountyAmount}();
+        uint256 newVaultsLength = vaultManager.getVaultsLength();
+        assertEq(newVaultsLength, initialVaultsLength + 1, "Vault not added successfully with bounty");
     }
 
-    // function testDeposit() public {
-    //    uint256 vaultId = vaultManager.addVault();
-    //    (address owner, uint256 initialBalance) = vaultManager.getVault(vaultId);
-
-    //    uint256 depositAmount = 100;
-
-    //    (bool success, ) = payable(address(vaultManager)).call{value: depositAmount}("");
-    //    require(success, "Deposit failed");
-
-    //    (address newOwner, uint256 newBalance) = vaultManager.getVault(vaultId);
-
-    //    assertEq(newBalance, initialBalance + depositAmount, "Deposit not processed correctly");
-    // }
-
-    // function testWithdraw() public {
-    //    uint256 vaultId = vaultManager.addVault();
-    //    (address owner, uint256 initialBalance) = vaultManager.getVault(vaultId);
-
-    //    uint256 withdrawAmount = 50;
-
-    //    (bool success, ) = payable(address(vaultManager)).call{value: withdrawAmount}("");
-    //    require(success, "Withdrawal failed");
-
-    //    (address newOwner, uint256 newBalance) = vaultManager.getVault(vaultId);
-
-    //    assertEq(newBalance, 0, "Withdraw not processed correctly");
-    // }
-
     function testGetVault() public {
-        uint256 vaultId = vaultManager.addVault();
+        // Change this line to use addVaultWithBounty instead
+        uint256 vaultId = vaultManager.addVaultWithBounty{value: 100}();
         (address owner, uint256 vaultBalance) = vaultManager.getVault(vaultId);
 
         assertEq(owner, address(this), "Owner should be the test contract address");
-        assertEq(vaultBalance, 0, "Initial balance should be 0");
+        assertEq(vaultBalance, 100, "Initial balance should be the bounty amount");
     }
 
     function testGetVaultsLength() public {
         uint256 initialVaultsLength = vaultManager.getVaultsLength();
-        vaultManager.addVault();
+        vaultManager.addVaultWithBounty{value: 100}();
         uint256 newVaultsLength = vaultManager.getVaultsLength();
 
         assertEq(newVaultsLength, initialVaultsLength + 1, "Vaults length not updated correctly");
     }
 
     function testGetMyVaults() public {
-        uint256 vaultId = vaultManager.addVault();
+        uint256 vaultId = vaultManager.addVaultWithBounty{value: 100}();
         uint256[] memory myVaults = vaultManager.getMyVaults();
 
         assertEq(myVaults.length, 1, "There should be 1 vault owned by the test contract");
