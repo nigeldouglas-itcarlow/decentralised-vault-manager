@@ -14,6 +14,7 @@ contract VaultManagerScript is Script {
         vm.stopBroadcast();
         //Console output for the contract address
         console2.log("Contract Address:", address(ctr));
+        console2.log("cast balance", address(ctr), "--rpc-url https://rpc.ankr.com/eth_sepolia | cast from-wei");
    }
 
     function run2() public {
