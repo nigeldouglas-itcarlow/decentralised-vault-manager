@@ -34,3 +34,14 @@ cast send 0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141 "deposit()()" \
 --unlocked \
 --value 40ether \
 --rpc-url https://rpc.ankr.com/eth_sepolia | cast from-wei
+
+## Deployed Contract
+https://sepolia.etherscan.io/address/0xaa8f8a11d3bfd130e0c28e2dbab19975024d127b#code
+
+## Transaction hash for that contract
+https://sepolia.etherscan.io/tx/0xf107485039733dd7503383f645475206695df4a24e995ea34addfad18ed0d629
+
+## Code deployed via Remix:
+https://remix.ethereum.org/?#ref=hackernoon.com&lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.22+commit.4fc1097e.js
+
+
